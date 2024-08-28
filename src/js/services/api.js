@@ -37,10 +37,11 @@ export const axiosInstance = axios.create({
  *      }>}>} - Returns a promise that resolves to an array of exercise objects.
  */
 export async function getExercises(args) {
+  
   const { params, signal } = args ?? {};
   const { page = 1, limit = 10, ...otherParams } = params ?? {};
 
-  const { res } = await axiosInstance.get('exercises', {
+  const { res }  = await axiosInstance.get('exercises', {
     params: {
       ...otherParams,
       page,
@@ -48,7 +49,6 @@ export async function getExercises(args) {
     },
     signal,
   });
-
   return res;
 }
 
@@ -139,7 +139,9 @@ export async function getFilters(args) {
   const { params, signal } = args ?? {};
   const { page = 1, limit = 12, ...otherParams } = params ?? {};
 
-  const { res } = await axiosInstance.get('filters', {
+  
+
+  const { data } = await axiosInstance.get('filters', {
     params: {
       ...otherParams,
       page,
@@ -147,8 +149,7 @@ export async function getFilters(args) {
     },
     signal,
   });
-
-  return res;
+  return data;
 }
 
 /**

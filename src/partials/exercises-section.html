@@ -1,8 +1,66 @@
-<div>
-  <p>exercises-section</p>
 
-  <load src="/partials/sidebar-info.html" />
-  <load src="/partials/filters-list.html" />
-  <load src="/partials/exercises-list.html" />
-  <load src="/partials/pagination.html" />
-</div>
+
+
+
+<section id="exercises-section" class="section exercises-section">
+  <div class="container">
+    <div class="exersize__head-wraper">
+
+      <h2 class="section__title">
+        Exercises
+     </h2>
+ 
+     
+     <!-- <load src="/partials/filters-list.html" /> -->
+
+          <!--Buttons-->
+      <ul class="exercises__buttons">
+        <li class="exercises__btn-item active">
+          <button class="exercises__btn-smpl active">Muscles</button>
+        </li>
+        <li class="exercises__btn-item">
+          <button class="exercises__btn-smpl">Body parts</button>
+        </li>
+        <li class="exercises__btn-item">
+          <button class="exercises__btn-smpl">Equipment</button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- cards -->
+    <div class="exercises__cards-wraper">
+      <div class="exercises__quote">
+        <load src="/partials/sidebar-info.html" />
+      </div>
+      
+      <div class="exercises__img-static">
+        <img class="exercises__img-img" src="../assets/images/exercises__img-itm.jpg" alt="women sportswear talking" class="exercises__img-itm" width="444"
+        height="242">
+      </div>
+      <div class="exercises__tip">
+        <p>
+          110 minutes<br>
+          Daily  norm of sports<br>
+          The World Health Organization recommends at least 150 minutes of moderate-intensity aerobic physical activity 
+          throughout the week for adults aged 18-64. However, what happens if we adjust that number to 110 minutes every day? 
+          While it might seem like a high number to hit, dedicating 110 minutes daily to sporting activities may offer 
+          unparalleled benefits to physical health, mental well-being, and overall quality of life.
+        </p>
+      </div>
+
+    
+      
+
+      <ul class="exercises__cards"></ul>
+
+
+     <load src="/partials/exercises-list.html" />
+ 
+     <load src="/partials/pagination.html" />
+
+    </div>
+    
+    
+    
+  </div>
+</section>
