@@ -5,4 +5,6 @@
   --footer: #c6cdd1;
   --black: #242424;
   --orange: #eea10c;
+
+  --smooth-transition: 600ms ease-in-out;
 }
