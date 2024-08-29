@@ -41,7 +41,7 @@ export async function getExercises(args) {
   const { params, signal } = args ?? {};
   const { page = 1, limit = 10, ...otherParams } = params ?? {};
 
-  const { data }  = await axiosInstance.get('exercises', {
+  const { data } = await axiosInstance.get('exercises', {
     params: {
       ...otherParams,
       page,
@@ -75,10 +75,10 @@ export async function getExercises(args) {
  * }>} - Returns a promise that resolves to an object containing exercise details.
  */
 export async function getExerciseById({ exerciseId, signal }) {
-  const { res } = await axiosInstance.get(`exercises/${exerciseId}`, {
+  const { data } = await axiosInstance.get(`exercises/${exerciseId}`, {
     signal,
   });
-  return res;
+  return data;
 }
 
 /**
@@ -107,11 +107,11 @@ export async function getExerciseById({ exerciseId, signal }) {
  * }>} - Returns a promise that resolves to the updated exercise details.
  */
 export async function addExerciseRating({ exerciseId, body }) {
-  const { res } = await axiosInstance.patch(
+  const { data } = await axiosInstance.patch(
     `exercises/${exerciseId}/rating`,
     body
   );
-  return res;
+  return data;
 }
 
 /**
@@ -139,8 +139,6 @@ export async function getFilters(args) {
   const { params, signal } = args ?? {};
   const { page = 1, limit = 12, ...otherParams } = params ?? {};
 
-  
-
   const { data } = await axiosInstance.get('filters', {
     params: {
       ...otherParams,
@@ -166,8 +164,8 @@ export async function getFilters(args) {
  */
 export async function getQuote(args) {
   const { signal } = args ?? {};
-  const { res } = await axiosInstance.get(`quote`, { signal });
-  return res;
+  const { data } = await axiosInstance.get(`quote`, { signal });
+  return data;
 }
 
 /**
@@ -183,6 +181,6 @@ export async function getQuote(args) {
  * }>} - Returns a promise that resolves to the response from the server, confirming the subscription creation.
  */
 export async function createSubscription({ body }) {
-  const { res } = await axiosInstance.post(`subscription`, body);
-  return res;
+  const { data } = await axiosInstance.post(`subscription`, body);
+  return data;
 }
