@@ -17,8 +17,31 @@
   position: relative;
   width: 100%;
 }
-.quote_image {
+.quote_image_wrapper {
+  width: 100%;
+  min-height: 242px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   border-radius: 20px;
+  background-image: url('../../assets/images/women-sportswear-taking-break-from-workout.jpg');
+}
+
+@media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .quote_image_wrapper {
+    background-image: url('../../assets/images/women-sportswear-taking-break-from-workout2x.jpg');
+  }
+}
+
+.quote_image {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  object-position: center;
+  object-fit: cover;
 }
 .quote_runner_icon {
   fill: white;
@@ -104,21 +127,13 @@
   .quote {
     display: grid;
     grid-template-columns: 400px 1fr;
-    grid-template-rows: 1fr 1fr;
 
     row-gap: 32px;
     column-gap: 18px;
     max-width: 100%;
   }
-  
-  /* .quote_image_wrapper {
-    grid-column: 2;
-    grid-row: 1;
-  } */
 
   .word_part {
-    grid-column: 1;
-    grid-row: 1;
     height: 100%;
     border-radius: 20px;
 
@@ -133,9 +148,12 @@
     width: 100%;
   }
 
+  .quote_image_wrapper {
+    height: 100%;
+  }
+
   .quote_image {
     border-radius: 20px;
-    object-fit: cover;
   }
   .quote_runner_icon {
     fill: white;
@@ -177,9 +195,6 @@
     font-weight: 400;
   }
   .daily_norm {
-    grid-column: 1;
-    grid-row: 2;
-
     border-radius: 20px;
     background-color: #ffffff;
 
