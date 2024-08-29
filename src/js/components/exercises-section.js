@@ -4,6 +4,8 @@ import draw_filters from './draw-filters';
 
 import { getExercises } from '../services/api';
 
+import { draw_exercies } from './draw-filters'
+
 const buttonsAll = document.querySelector('.exercises__buttons');
 const exersice = document.querySelector('.exercises__cards');
 
@@ -56,7 +58,8 @@ const onExercisesHandler = async event => {
     },
   });
 
-  console.log(exercises);
+  console.log(exercises.results);
+  draw_exercies(exercises.results);
 
   
 };
