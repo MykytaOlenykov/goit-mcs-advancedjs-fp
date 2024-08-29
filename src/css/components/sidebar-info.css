@@ -103,17 +103,19 @@
 @media screen and (min-width: 768px) {
   .quote {
     display: grid;
-    grid-template-columns: 400px, 1fr;
-    grid-template-rows: 1fr, 1fr;
+    grid-template-columns: 400px 1fr;
+    grid-template-rows: 1fr 1fr;
 
     row-gap: 32px;
     column-gap: 18px;
     max-width: 100%;
   }
-  .quote_image_wrapper {
+  
+  /* .quote_image_wrapper {
     grid-column: 2;
     grid-row: 1;
-  }
+  } */
+
   .word_part {
     grid-column: 1;
     grid-row: 1;
