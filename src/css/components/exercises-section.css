@@ -2,26 +2,40 @@
     margin-bottom: 132px;
 }
 
+.section__title {
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+}
+
+@media only screen and (min-width: 768px) {
+    .section__title {
+        font-size: 44px;
+        line-height: 1.09;
+        letter-spacing: -0.02em;
+    }
+}
+
 .exersize__head-wraper {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.section__title {
-    font-size: 28px;
-    font-weight: 400;
-    line-height: 1.35;
-    letter-spacing: -0.035em;
-
+@media only screen and (min-width: 768px) {
+    .exersize__head-wraper {
+        gap: 32px;
+    }
 }
 
-@media only screen and (min-width: 1158px) {
+
+@media only screen and (min-width: 1440px) {
     .exersize__head-wraper {
         display: flex;
         align-items: center;
         flex-direction: row;
-        
+
         padding-bottom: 32px;
     }
 }
@@ -37,17 +51,30 @@
     line-height: 142%;
 }
 
-
-@media only screen and (min-width: 1158px) {
+@media only screen and (min-width: 768px) {
     .exercises__buttons {
-        margin-left: auto;
+        font-size: 16px;
+        line-height: 150%;
+        margin-bottom: 32px;
     }
 }
 
+@media only screen and (min-width: 1440px) {
+    .exercises__buttons {
+        margin-left: auto;
+        margin-bottom: 0;
+    }
+}
 
 .exercises__btn-smpl {
     border: none;
+    opacity: 0.6;
 }
+
+.exercises__btn-smpl.active {
+    opacity: 1;
+}
+
 
 .exercises__cards-wraper {
     display: grid;
@@ -55,17 +82,30 @@
     gap: 20px;
 }
 
-@media only screen and (min-width: 1158px) {
+@media only screen and (min-width: 768px) {
     .exercises__cards-wraper {
-        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .exercises__cards-wraper {
         grid-template-columns: 444px 1fr;
         grid-template-rows: repeat(4, 242px);
         gap: 32px;
     }
 }
 
-.exercises__quote {
+/* Additional blocks */
+
+.exercises__additional-blocks {
+    display: grid;
     order: 2;
+    gap: 20px;
+    padding-top: 80px;
+}
+
+.exercises__quote {
     border-radius: 12px;
     background-color: grey;
     height: 225px;
@@ -75,7 +115,6 @@
     width: 335px;
     height: 225px;
 
-    order: 3;
     border-radius: 12px;
     overflow: hidden;
 }
@@ -88,72 +127,106 @@
 }
 
 .exercises__tip {
-    order: 4;
     border-radius: 12px;
     background-color: gainsboro;
 }
 
-@media only screen and (min-width: 1158px) {
+@media only screen and (min-width: 786px) {
+    .exercises__additional-blocks {
+        display: grid;
+        grid-template-columns: 400px 288px;
+        gap: 32px 16px;
+        grid-row: 2 /3;
+
+        padding-top: 64px;
+    }
+
     .exercises__quote {
-        background-color: gray;
+        height: 249px;
+
     }
-    
+
     .exercises__img-static {
-        grid-row: 2 / 3;
-    }
-        
-    
-    .exercises__tip {
-        grid-row-start: 3;
-        height: 315px;
-        
+        width: 288px;
+        height: 249px;
     }
 }
 
 
+@media only screen and (min-width: 1440px) {
+    .exercises__additional-blocks {
+        grid-template-columns: 1fr;
+        grid-row: 1 /2;
+        padding: 0;
+        gap: 32px;
+    }
+
+    .exercises__quote {
+        width: 444px;
+        height: 242px;
+        order: 0;
+    }
+
+    .exercises__img-static {
+        order: 0;
+        width: 444px;
+        grid-row: 2 / 3;
+        height: 242px;
+    }
+
+    .exercises__tip {
+        order: 0;
+        grid-row-start: 3;
+        height: 315px;
+    }
+}
+
+/* end of additional blocks */
+
+
 
 .exercises__cards {
-    /* display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 242px); */
+    display: grid;
+    grid-template-columns: 1fr;
 
-    display: flex; 
-    flex-wrap: wrap;
-    gap: 32px 15px;
+    gap: 20px;
     justify-content: center;
-    /* overflow: hidden; */
+}
+
+@media only screen and (min-width: 768px) {
+    .exercises__cards {
+        display: grid;
+        gap: 32px 15px;
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 .exercises__cards-item {
     width: 335px;
     height: 225px;
-
     border-radius: 12px;
 
     overflow: hidden;
     position: relative;
+    /* background-image: linear-gradient(0deg, rgba(17, 17, 17, 0.50) 0%, rgba(17, 17, 17, 0.50) 100%); */
+    /* background: black; */
 }
 
 /* background: linear-gradient(0deg, rgba(17, 17, 17, 0.50) 0%, rgba(17, 17, 17, 0.50) 100%), url(<path-to-image>) lightgray -44.056px -4.58px / 132.562% 121.147% no-repeat; */
 
-
-
-@media only screen and (min-width: 1158px) {
+@media only screen and (min-width: 768px) {
     .exercises__cards-item {
-        width: 290px;
-        height: 242px;
-    
-        /* display: flex;
-        flex-direction: column; */
+        width: 225px;
+        height: 225px;
     }
 }
 
-
-/* .exercises__cards-link {
-    font-size: 20px;
-    font-weight: 400;
-    
-} */
+@media only screen and (min-width: 1440px) {
+    .exercises__cards-item {
+        width: 290px;
+        height: 242px;
+    }
+}
 
 
 .exercises__cards-image {
@@ -161,17 +234,18 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-
 }
+
 
 .exercises__cards-descr {
     display: flex;
+    gap: 2px;
     flex-direction: column;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
 
-    position: absolute; 
-    top: 40%;
-    left: 50%; 
-    transform: translateX(-50%); 
     text-align: center;
 
     color: white;
@@ -183,21 +257,42 @@
     font-size: 20px;
     font-weight: 400;
     line-height: 100%;
-    
 }
 
-@media only screen and (min-width: 1158px) {
+@media only screen and (min-width: 768px) {
     .exercises__cards-metadata-name {
-        font-size: 16px;
+        font-size: 24px;
     }
-
 }
+
 
 .exercises__cards-metadata-filter {
-    color: rgba(244, 244, 244, 0.40);
+    /* color: rgba(244, 244, 244, 0.40); */
+    opacity: 0.4;
     font-size: 12px;
     font-weight: 400;
     line-height: 150%;
     font-feature-settings: 'liga' off, 'clig' off;
-    
+}
+
+/* Active button styling */
+
+.active {
+    position: relative;
+    color: var(--black);
+
+}
+
+.exercises__btn-smpl.active::after {
+    content: '';
+    background-color: var(--black);
+
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    display: block;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+
 }

@@ -41,7 +41,7 @@ export async function getExercises(args) {
   const { params, signal } = args ?? {};
   const { page = 1, limit = 10, ...otherParams } = params ?? {};
 
-  const { res }  = await axiosInstance.get('exercises', {
+  const { data }  = await axiosInstance.get('exercises', {
     params: {
       ...otherParams,
       page,
@@ -49,7 +49,7 @@ export async function getExercises(args) {
     },
     signal,
   });
-  return res;
+  return data;
 }
 
 /**
