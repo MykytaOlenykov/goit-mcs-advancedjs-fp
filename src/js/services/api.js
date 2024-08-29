@@ -37,6 +37,7 @@ export const axiosInstance = axios.create({
  *      }>}>} - Returns a promise that resolves to an array of exercise objects.
  */
 export async function getExercises(args) {
+  
   const { params, signal } = args ?? {};
   const { page = 1, limit = 10, ...otherParams } = params ?? {};
 
@@ -48,7 +49,6 @@ export async function getExercises(args) {
     },
     signal,
   });
-
   return data;
 }
 
@@ -147,7 +147,6 @@ export async function getFilters(args) {
     },
     signal,
   });
-
   return data;
 }
 
