@@ -45,8 +45,10 @@ document.querySelectorAll('.modal-star').forEach(star => {
 
 async function formSubmitHandler(event) {
   event.preventDefault();
-  const emailInput = document.querySelector('input[type="email"]').value;
-  const commentInput = document.querySelector('textarea').value;
+  const formElements = event.target.elements;
+
+  const email = formElements.email.value;
+  const comment = formElements.comment.value;
   const stars = parseInt(document.querySelector('.modal-rating').textContent);
 
   document.getElementById('email-error').style.display = 'none';
