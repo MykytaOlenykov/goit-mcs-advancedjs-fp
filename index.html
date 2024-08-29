@@ -8,19 +8,42 @@
     />
     <title>YOUR ENERGY</title>
     <link rel="icon" type="image/svg+xml" href="/goit-mcs-advancedjs-fp/favicon.svg" />
-    <script type="module" crossorigin src="/goit-mcs-advancedjs-fp/assets/vendor-CR7N1gwd.js"></script>
-    <script type="module" crossorigin src="/goit-mcs-advancedjs-fp/assets/sidebar-info-BBexadEH.js"></script>
-    <link rel="stylesheet" crossorigin href="/goit-mcs-advancedjs-fp/assets/index-dybJrHiI.css">
+    <script type="module" crossorigin src="/goit-mcs-advancedjs-fp/index.js"></script>
+    <link rel="modulepreload" crossorigin href="/goit-mcs-advancedjs-fp/assets/vendor-CR7N1gwd.js">
+    <link rel="modulepreload" crossorigin href="/goit-mcs-advancedjs-fp/assets/sidebar-info-CrLCD08b.js">
+    <link rel="stylesheet" crossorigin href="/goit-mcs-advancedjs-fp/assets/index-BAgzAssj.css">
   </head>
   <body>
     <p>header</p>
 
     <p>hero</p>
 
-    <div>
-  <p>exercises-section</p>
+    <section id="exercises-section" class="section exercises-section">
+  <div class="container">
+    <div class="exersize__head-wraper">
+      <h2 class="section__title">Exercises</h2>
 
-  <div class="quote">
+      <!--  -->
+
+      <!--Buttons-->
+      <ul class="exercises__buttons">
+        <li class="exercises__btn-item">
+          <button class="exercises__btn-smpl active">Muscles</button>
+        </li>
+        <li class="exercises__btn-item">
+          <button class="exercises__btn-smpl">Body parts</button>
+        </li>
+        <li class="exercises__btn-item">
+          <button class="exercises__btn-smpl">Equipment</button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- cards -->
+    <div class="exercises__cards-wraper">
+      <div class="exercises__additional-blocks">
+        <div class="exercises__quote">
+          <div class="quote">
   <div class="word_part">
     <div class="icon-wrapper-runner">
       <svg class="quote_runner_icon" width="18" height="20">
@@ -72,13 +95,18 @@
   </div>
 </div>
 
-  <p>filters-list</p>
+        </div>
+      </div> 
 
-  <p>exercises-list</p>
+      <ul class="exercises__cards"></ul>
 
-  <p>pagination</p>
+        
+    </div>
 
-</div>
+    <p>pagination</p>
+
+  </div>
+</section>
 
     <p>footer</p>
 
