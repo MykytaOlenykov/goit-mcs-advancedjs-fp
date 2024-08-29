@@ -1,15 +1,5 @@
-// import { getQuote } from '../services/api.js';
-import axios from 'axios';
+import { getQuote } from '../services/api.js';
 
-async function getQuote() {
-    try {
-        const response = await axios.get('https://your-energy.b.goit.study/api/quote');
-        return response.data; 
-    } catch (error) {
-        console.error('Error fetching quote', error);
-        throw error; 
-    }
-}
 
 function sidebarInfo() {
     let storedQuote = localStorage.getItem('quote');
@@ -17,7 +7,7 @@ function sidebarInfo() {
 
     if (!storedQuote) {
         getQuote().then((data) => {
-            console.log(data);
+            
             data.date = today; // Добавляем дату в объект цитаты
             localStorage.setItem('quote', JSON.stringify(data));
             updateQuote(data);
