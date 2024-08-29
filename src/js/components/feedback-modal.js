@@ -45,36 +45,39 @@ document.querySelectorAll('.modal-star').forEach(star => {
 
 async function formSubmitHandler(event) {
   event.preventDefault();
+  const feedbackForm = document.querySelector('.modal-form');
   const formElements = event.target.elements;
 
   const email = formElements.email.value;
   const comment = formElements.comment.value;
-  const stars = parseInt(document.querySelector('.modal-rating').textContent);
+  const stars = parseInt(
+    feedbackForm.querySelector('.modal-rating').textContent
+  );
 
-  document.getElementById('email-error').style.display = 'none';
-  document.getElementById('comment-error').style.display = 'none';
-  document.getElementById('stars-error').style.display = 'none';
+  feedbackForm.querySelector('#email-error').style.display = 'none';
+  feedbackForm.querySelector('#comment-error').style.display = 'none';
+  feedbackForm.querySelector('#stars-error').style.display = 'none';
 
   try {
     const validatedData = await formSchema.validate({
-      email: emailInput,
-      comment: commentInput,
+      email: email,
+      comment: comment,
       stars: stars,
     });
     console.log('Validated Data:', validatedData);
     refs.modal.classList.add('is-hidden');
   } catch (err) {
     if (err.path === 'email') {
-      document.getElementById('email-error').textContent = err.message;
-      document.getElementById('email-error').style.display = 'block';
+      feedbackForm.querySelector('#email-error').textContent = err.message;
+      feedbackForm.querySelector('#email-error').style.display = 'block';
     }
     if (err.path === 'comment') {
-      document.getElementById('comment-error').textContent = err.message;
-      document.getElementById('comment-error').style.display = 'block';
+      feedbackForm.querySelector('#comment-error').textContent = err.message;
+      feedbackForm.querySelector('#comment-error').style.display = 'block';
     }
     if (err.path === 'stars') {
-      document.getElementById('stars-error').textContent = err.message;
-      document.getElementById('stars-error').style.display = 'block';
+      feedbackForm.querySelector('#stars-error').textContent = err.message;
+      feedbackForm.querySelector('#stars-error').style.display = 'block';
     }
   }
 }

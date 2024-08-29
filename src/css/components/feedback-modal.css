@@ -44,7 +44,6 @@
 .modal-stars {
   display: flex;
   justify-content: left;
-  margin-bottom: 32px;
 }
 
 .modal-star {
@@ -52,6 +51,7 @@
 }
 
 .modal input[type='email'] {
+  margin-top: 32px;
   margin-bottom: 16px;
   width: 100%;
   display: inline-flex;
@@ -65,7 +65,6 @@
 
 .modal textarea {
   width: 100%;
-  margin-bottom: 32px;
   display: inline-flex;
   padding: 12px 14px;
   align-items: center;
@@ -81,6 +80,7 @@
 .modal button {
   display: inline-flex;
   padding: 12px;
+  margin-top: 32px;
   justify-content: center;
   align-items: center;
   gap: 8px;
@@ -107,5 +107,11 @@
   color: #f5004f;
   font-size: 18px;
   margin-bottom: 10px;
+  display: none;
+}
+
+.error-message-stars {
+  color: #f5004f;
+  font-size: 18px;
   display: none;
 }

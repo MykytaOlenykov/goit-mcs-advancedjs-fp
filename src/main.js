@@ -1,1 +1,1 @@
-import toggleModal from './js/components/feedback-modal';
+import './js/components/feedback-modal';
