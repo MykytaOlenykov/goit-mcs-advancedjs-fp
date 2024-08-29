@@ -59,24 +59,35 @@ async function formSubmitHandler(event) {
   feedbackForm.querySelector('#stars-error').style.display = 'none';
 
   try {
-    const validatedData = await formSchema.validate({
-      email: email,
-      comment: comment,
-      stars: stars,
-    });
+    const validatedData = await formSchema.validate(
+      {
+        email: email,
+        comment: comment,
+        stars: stars,
+      },
+      { abortEarly: false }
+    );
     console.log('Validated Data:', validatedData);
     refs.modal.classList.add('is-hidden');
   } catch (err) {
-    if (err.path === 'email') {
-      feedbackForm.querySelector('#email-error').textContent = err.message;
+    const errors = {};
+    err.inner.forEach(error => {
+      if (!errors[error.path]) {
+        errors[error.path] = error.message;
+      }
+    });
+    console.log(errors);
+    if (errors['email']) {
+      feedbackForm.querySelector('#email-error').textContent = errors['email'];
       feedbackForm.querySelector('#email-error').style.display = 'block';
     }
-    if (err.path === 'comment') {
-      feedbackForm.querySelector('#comment-error').textContent = err.message;
+    if (errors['comment']) {
+      feedbackForm.querySelector('#comment-error').textContent =
+        errors['comment'];
       feedbackForm.querySelector('#comment-error').style.display = 'block';
     }
-    if (err.path === 'stars') {
-      feedbackForm.querySelector('#stars-error').textContent = err.message;
+    if (errors['stars']) {
+      feedbackForm.querySelector('#stars-error').textContent = errors['stars'];
       feedbackForm.querySelector('#stars-error').style.display = 'block';
     }
   }
