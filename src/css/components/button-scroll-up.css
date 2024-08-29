@@ -1,0 +1,62 @@
+.scroll__up {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 99;
+  display: none;
+  border: none;
+  background: no-repeat scroll var(--black);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  opacity: 0.8;
+  cursor: pointer;
+  padding: 11px;
+  margin: 0;
+  z-index: 90;
+}
+
+.scroll__up:hover,
+.scroll__up:focus {
+  background: #3a3a3a;
+}
+
+.scroll__up--show {
+  display: block;
+}
+
+.scroll__icon {
+  width: 17px;
+  height: 17px;
+  fill: var(--gray);
+}
+
+@media screen and (min-width: 768px) {
+  .scroll__icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .scroll__up {
+    width: 60px;
+    height: 60px;
+    padding: 17px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .scroll__icon {
+    width: 43px;
+    height: 43px;
+  }
+
+  .scroll__up {
+    width: 100px;
+    height: 100px;
+    padding: 28px;
+  }
+}
+
+.scroll__up {
+  transition: all 200ms ease-in-out;
+}
