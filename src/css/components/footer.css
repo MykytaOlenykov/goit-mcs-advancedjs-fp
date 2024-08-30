@@ -1,0 +1,220 @@
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-shrink: 0;
+  background-color: #242424;
+  padding-top: 40px;
+}
+.logo-socials__wrapper {
+  margin-bottom: 40px;
+}
+.footer-socials__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  color: var(--gray);
+  /* opacity: 0.8; */
+  border-radius: 10px;
+  border: 1px solid rgba(244, 244, 244, 0.1);
+  transition: color 250ms linear, background-color 250ms linear;
+}
+.footer-socials__link:hover {
+  background-color: #F4F4F4;
+  color: #242424;
+}
+.footer-socials__link:hover .footer__social-icon {
+  opacity: 0.8;
+}
+.socials__icons {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+.footer__social-icon {
+  fill: currentColor;
+  width: 24px;
+  height: 24px;
+  transition: opacity 250ms linear;
+}
+
+.motto__wrapper {
+  color: #f4f4f4;
+  font-family: 'DM Sans';
+  font-size: 38px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 115.789%;
+  letter-spacing: -0.76px;
+  padding-bottom: 20px;
+}
+.motto__wrapper span {
+  color: #f4f4f4;
+  font-family: 'DM Sans';
+  font-style: italic;
+}
+.subscription-block__wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding-bottom: 120px;
+}
+.subscription-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.form-title__wrapper p {
+  color: #f4f4f4;
+  font-family: 'DM Sans';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+}
+.subscription-form input {
+  display: flex;
+  padding: 12px 175px 12px 14px;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: 30px;
+  border: 1px solid #f4f4f4;
+  background-color: #242424;
+  color: rgba(244, 244, 244, 0.6);
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+}
+.subscription-form button {
+  display: flex;
+  padding: 12px 150px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  border-radius: 30px;
+  background-color: #f4f4f4;
+
+  color: #242424;
+  font-family: 'DM Sans';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+}
+
+.policy-block__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+
+  justify-content: flex-start;
+  color: #c6cdd1;
+  font-family: 'DM Sans';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+  letter-spacing: -0.28px;
+  opacity: 0.9;
+  padding-bottom: 10px;
+}
+.year {
+  padding-left: 79px;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .main-block__wrapper {
+    display: grid;
+    grid-template-columns: 156px 434px;
+    justify-content: space-between;
+    row-gap: 32px;
+    
+    margin-bottom: 64px;
+    
+  }
+  .logo-socials__wrapper {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    
+  }
+  .motto__wrapper {
+    padding-bottom: 0px;
+    font-size: 56px;
+    line-height: 107%;
+    letter-spacing: -1.12px;
+    padding-left: 0px;
+  }
+  .subscription-block__wrapper {
+    padding-bottom: 0px;
+  }
+  .form-title__wrapper p {
+    font-size: 18px;
+  }
+  .subscription-form input {
+    font-size: 16px;
+  }
+  .subscription-form button {
+    font-size: 16px;
+    padding: 12px 45%;
+  }
+  .links {
+    margin-left: 78px;
+  }
+  .year {
+    margin-left: 100px;
+  }
+
+}
+
+@media only screen and (min-width: 1440px) {
+  .main-block__wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .logo-socials__wrapper {
+    margin-right: 158px;
+  }
+  .footer__social-icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    
+  }
+  
+  .policy-block__wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    width: 100%;
+  
+    color: #c6cdd1;
+    font-family: 'DM Sans';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px; 
+    letter-spacing: -0.28px;
+  }
+  .links {
+    margin-left: 110px;
+    margin-right: 330px;
+  }
+  
+
+}
