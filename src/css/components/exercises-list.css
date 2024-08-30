@@ -1,0 +1,136 @@
+.exersize__search-input {
+  width: 335px;
+  padding: 12px 208px 12px 14px;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: 30px;
+  border: 1px solid var(--black);
+  color: var(--black);
+}
+
+.exersize__form {
+  position: relative;
+}
+
+.exersize__search-icon {
+  fill: var(--black);
+  position: absolute;
+  top: 13px;
+  right: 14px;
+}
+
+.exercises__name {
+  width: 335px;
+  border-radius: 15px;
+  padding: 16px;
+
+  background-color: var(--white);
+}
+
+@media only screen and (min-width: 768px) {
+    .exercises__name {
+        width: 344px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .exercises__name {
+        width: 442px;
+    }
+}
+
+
+.exercises__name-wraper-1 {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding-bottom: 25px;
+  position: relative;
+}
+
+.exercises__name-tag {
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--black);
+  border-radius: 15px;
+  padding: 5px 8px;
+}
+
+.exercises__name-btn {
+  margin-left: auto;
+  margin-right: 24px;
+  border: none;
+  background-color: transparent;
+}
+
+.exercises__name-icon {
+  position: absolute;
+  right: 0;
+}
+
+.exercises__name-h3 {
+  font-size: 20px;
+  font-weight: 400;
+  padding-bottom: 18px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  padding-left: 40px;
+}
+
+@media only screen and (min-width: 768px) {
+    .exercises__name-h3 {
+        font-size: 24px;
+        line-height: 133%;
+    }
+
+}
+
+.exercises__name-h3::first-letter {
+  text-transform: uppercase;
+}
+
+.exercises__name-h3-wraper {
+  position: relative;
+}
+
+.exersize__h3-icon-wraper {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--black);
+  width: 24px;
+  height: 24px;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exersize__h3-icon {
+  fill: var(--white);
+}
+
+.exercises__name-props {
+  display: flex;
+  gap: 10px;
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 150%;
+  /* opacity: 0.4; */
+  color: rgba(36, 36, 36, 0.4);
+}
+
+.exercises__name-item {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.exercises__name-clr {
+  color: var(--black);
+}

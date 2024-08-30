@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const filtersPerPage = 12;
-  const exercisesPerPage = 10;
+  const exercisesPerPage = window.innerWidth <= 768 ? 8 : 10;
   const visiblePagesPagination = 10;
   let currentPage = 1;
   let selectedCategory = 'Muscles';
@@ -76,6 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const fetchAndDrawFilters = async (category = 'Muscles') => {
+    exersice.classList.remove('exercises__cards-wrkt'); 
+    
     try {
       const { results, totalPages } = await getFilters({
         params: {
