@@ -62,6 +62,7 @@
   margin-right: 24px;
   border: none;
   background-color: transparent;
+  padding: 0;
 }
 
 .exercises__name-icon {
@@ -95,6 +96,8 @@
 
 .exercises__name-h3-wraper {
   position: relative;
+  display: flex;
+
 }
 
 .exersize__h3-icon-wraper {
@@ -112,6 +115,9 @@
 
 .exersize__h3-icon {
   fill: var(--white);
+
+  position: absolute;
+  
 }
 
 .exercises__name-props {
