@@ -22,10 +22,12 @@ export default function draw_filters(cards) {
     )
     .join('');
 
+  cardList.classList.remove('exercises__cards-wrkt');
+
   cardList.innerHTML = markup;
 }
 
-export function draw_exercies(keyword) {
+export function draw_exercises(keyword) {
   const markup_exercies = keyword
     .map(
       key =>
@@ -38,17 +40,15 @@ export function draw_exercies(keyword) {
           <svg class="exercises__name-icon" width="16" height="16" style="stroke: black;">
             <use href="./assets/icons/icons-sprite.svg#arrow"></use>
           </svg>
-        
-        
         </div>
 
         <div class="exercises__name-h3-wraper">
-        <h3 class="exercises__name-h3">${key.name}</h3>
-        <div class="exersize__h3-icon-wraper">
-          <svg class="exersize__h3-icon" width="18" height="18">
-            <use href="../assets/icons/icons-sprite.svg#runner"></use>
-          </svg>
-        </div>
+          <h3 class="exercises__name-h3">${key.name}</h3>
+          <div class="exersize__h3-icon-wraper">
+            <svg class="exersize__h3-icon" width="18" height="18">
+              <use href="../assets/icons/icons-sprite.svg#runner"></use>
+            </svg>
+          </div>
         </div>
 
         <ul class="exercises__name-props" >
@@ -61,7 +61,7 @@ export function draw_exercies(keyword) {
     )
     .join('');
 
-  cardList.classList.add('exercises__cards-wrkt');  
+  cardList.classList.add('exercises__cards-wrkt');
 
   cardList.innerHTML = markup_exercies;
 }

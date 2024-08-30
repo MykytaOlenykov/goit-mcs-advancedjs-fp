@@ -4,10 +4,10 @@ import draw_filters from './draw-filters';
 
 import { getExercises } from '../services/api';
 
-import { draw_exercies } from './draw-filters'
+import { draw_exercises } from './draw-filters';
 
 const buttonsAll = document.querySelector('.exercises__buttons');
-const exersice = document.querySelector('.exercises__cards');
+const exercise = document.querySelector('.exercises__cards');
 
 let page_load = 1;
 
@@ -18,7 +18,6 @@ const onFilterButton = async event => {
       : 'Muscles';
 
   page_load = 1;
-  exersice.classList.remove('exercises__cards-wrkt'); 
 
   try {
     const data = await getFilters({
@@ -47,11 +46,10 @@ const onExercisesHandler = async event => {
 
   const link = event.target.closest('.exercises__cards-link');
   if (!link) {
-    return
-;  }
+    return;
+  }
   const selectedExc = link.getAttribute('data-name');
   const limit = window.innerWidth <= 768 ? 8 : 10;
-
 
   //logic for the request
 
@@ -63,15 +61,13 @@ const onExercisesHandler = async event => {
         limit: limit,
       },
     });
-  
-    draw_exercies(exercises.results);
 
-  } catch(error) {
+    draw_exercises(exercises.results);
+  } catch (error) {
     console.log('Error fetching exercises:', error);
   }
-
 };
 
-if (exersice) {
-  exersice.addEventListener('click', onExercisesHandler);
+if (exercise) {
+  exercise.addEventListener('click', onExercisesHandler);
 }
