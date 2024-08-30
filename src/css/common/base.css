@@ -36,6 +36,9 @@ body {
   font-family: 'DM Sans', sans-serif;
   font-size: 16px;
   line-height: 1.5;
+  color: var(--black);
+
+  background-color: var(--gray);
 }
 
 .visually-hidden {
@@ -49,4 +52,23 @@ body {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   margin: -1px;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 375px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0 32px;
+    max-width: 768px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+  }
 }

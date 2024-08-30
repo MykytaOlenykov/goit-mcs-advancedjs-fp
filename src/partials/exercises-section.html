@@ -1,10 +1,35 @@
-<div>
-  <p>exercises-section</p>
+<section id="exercises-section" class="section exercises-section">
+  <div class="container">
+    <div class="exersize__head-wraper">
+      <h2 class="section__title">Exercises</h2>
 
-  <load src="/partials/sidebar-info.html" />
-  <load src="/partials/filters-list.html" />
-  <load src="/partials/muscles-list.html" />
-  <load src="/partials/body-parts-list.html" />
-  <load src="/partials/equipments-list.html" />
-  <load src="/partials/pagination.html" />
-</div>
+      <!-- <load src="/partials/filters-list.html" /> -->
+
+      <!--Buttons-->
+      <ul class="exercises__buttons">
+        <li class="exercises__btn-item">
+          <button class="exercises__btn-smpl active">Muscles</button>
+        </li>
+        <li class="exercises__btn-item">
+          <button class="exercises__btn-smpl">Body parts</button>
+        </li>
+        <li class="exercises__btn-item">
+          <button class="exercises__btn-smpl">Equipment</button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- cards -->
+    <div class="exercises__cards-wraper">
+      <div>
+        <load src="/partials/sidebar-info.html" />
+      </div>
+
+      <ul class="exercises__cards"></ul>
+
+      <load src="/partials/exercises-list.html" />
+    </div>
+
+    <load src="/partials/pagination.html" />
+  </div>
+</section>

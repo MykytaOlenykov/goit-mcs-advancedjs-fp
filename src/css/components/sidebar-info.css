@@ -1,0 +1,415 @@
+.quote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 444px;
+  gap: 20px;
+}
+.word_part {
+  border-radius: 20px;
+  background-color: #242424;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  gap: 18px;
+}
+.div_quote_text {
+  position: relative;
+  width: 100%;
+}
+.quote_image_wrapper {
+  width: 100%;
+  min-height: 242px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  background-image: url('../../assets/images/women-sportswear-taking-break-from-workout.jpg');
+}
+
+@media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .quote_image_wrapper {
+    background-image: url('../../assets/images/women-sportswear-taking-break-from-workout2x.jpg');
+  }
+}
+
+.quote_image {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  object-position: center;
+  object-fit: cover;
+}
+.quote_runner_icon {
+  fill: white;
+}
+.icon-wrapper-runner {
+  border-radius: 100%;
+  background-color: rgba(244, 244, 244, 0.2);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 32px;
+}
+.quote_commas_icon {
+  fill: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.quote_title {
+  color: white;
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.p_quote_text {
+  font-size: 14px;
+  color: rgba(244, 244, 244, 0.6);
+  margin-bottom: 16px;
+}
+
+.p_quote_author {
+  color: white;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+.daily_norm {
+  display: flex;
+  gap: 18px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  width: 100%;
+  padding: 20px;
+}
+.daily_norm_icon_wrapper {
+  border-radius: 100%;
+  background-color: rgba(0, 0, 0);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 32px;
+}
+.daily_norm_icon {
+  fill: white;
+}
+.daily_norm_title {
+  font-size: 24px;
+  margin-bottom: 2px;
+  color: #242424;
+}
+.daily_norm_subtitle {
+  color: rgba(36, 36, 36, 0.6);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.p_daily_norm_text {
+  font-size: 14px;
+  color: #242424;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media screen and (min-width: 768px) {
+  .quote {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+
+    row-gap: 32px;
+    column-gap: 18px;
+    max-width: 100%;
+  }
+
+  .word_part {
+    height: 100%;
+    border-radius: 20px;
+
+    background-color: #242424;
+
+    padding: 40px;
+    display: flex;
+    gap: 16px;
+  }
+  .div_quote_text {
+    position: relative;
+    width: 100%;
+  }
+
+  .quote_image_wrapper {
+    height: 100%;
+  }
+
+  .quote_image {
+    border-radius: 20px;
+  }
+  .quote_runner_icon {
+    fill: white;
+  }
+  .icon-wrapper-runner {
+    border-radius: 100%;
+    background-color: rgba(244, 244, 244, 0.2);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 32px;
+  }
+  .quote_commas_icon {
+    fill: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .quote_title {
+    color: white;
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .p_quote_text {
+    font-size: 14px;
+    color: rgba(244, 244, 244, 0.6);
+    margin-bottom: 8px;
+  }
+
+  .p_quote_author {
+    color: white;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  .daily_norm {
+    border-radius: 20px;
+    background-color: #ffffff;
+    padding: 40px;
+  }
+  .daily_norm_icon_wrapper {
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 32px;
+  }
+  .daily_norm_icon {
+    fill: white;
+  }
+  .daily_norm_title {
+    font-size: 24px;
+    margin-bottom: 2px;
+    color: #242424;
+  }
+  .daily_norm_subtitle {
+    color: rgba(36, 36, 36, 0.6);
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .p_daily_norm_text {
+    font-size: 14px;
+    color: #242424;
+    display: block; /* Отменяем использование -webkit-box */
+    -webkit-line-clamp: unset; /* Отменяем ограничение количества строк */
+    -webkit-box-orient: unset; /* Отменяем ориентацию */
+    max-height: none; /* Отменяем максимальную высоту */
+    overflow: visible; /* Позволяем тексту показываться полностью */
+    text-overflow: unset; /* Отменяем обрезку текста */
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .quote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 444px;
+    gap: 32px;
+  }
+  .word_part {
+    border-radius: 20px;
+    background-color: #242424;
+    width: 100%;
+    padding: 40px;
+    display: flex;
+    gap: 16px;
+  }
+  .div_quote_text {
+    position: relative;
+    width: 100%;
+  }
+  .quote_image {
+    border-radius: 20px;
+  }
+  .quote_runner_icon {
+    fill: white;
+  }
+  .icon-wrapper-runner {
+    border-radius: 100%;
+    background-color: rgba(244, 244, 244, 0.2);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 32px;
+  }
+  .quote_commas_icon {
+    fill: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .quote_title {
+    color: white;
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .p_quote_text {
+    font-size: 14px;
+    color: rgba(244, 244, 244, 0.6);
+    margin-bottom: 8px;
+  }
+
+  .p_quote_author {
+    color: white;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  .daily_norm {
+    display: flex;
+    gap: 16px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    width: 100%;
+    padding: 40px;
+  }
+  .daily_norm_icon_wrapper {
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 32px;
+  }
+  .daily_norm_icon {
+    fill: white;
+  }
+  .daily_norm_title {
+    font-size: 24px;
+    margin-bottom: 2px;
+    color: #242424;
+  }
+  .daily_norm_subtitle {
+    color: rgba(36, 36, 36, 0.6);
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .p_daily_norm_text {
+    font-size: 14px;
+    color: #242424;
+  }
+}
+/* favorite section */
+
+.favorites-section .quote {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 119px 119px;
+  gap: 20px;
+}
+
+.favorites-section .word_part {
+  grid-column: 1;
+  grid-row: 1;
+}
+.favorites-section .quote_image_wrapper {
+  grid-column: 1;
+  grid-row: 3;
+  height: 119px;
+  min-height: auto;
+}
+.favorites-section .daily_norm {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.favorites-section .p_daily_norm_text {
+  display: none;
+}
+.favorites-section .daily_norm_icon {
+  fill: black;
+  width: 20px;
+  height: 20px;
+}
+.favorites-section .daily_norm_icon_wrapper {
+  background-color: transparent;
+  display: flex;
+  justify-content: flex-start;
+  width: 20px;
+  height: 20px;
+}
+.favorites-section .daily_norm_subtitle {
+  font-weight: 400;
+  font-size: 14px;
+  margin: 0;
+}
+.favorites-section .daily_norm_title {
+  font-weight: 500;
+  font-size: 20px;
+  margin: 0;
+}
+@media screen and (min-width: 768px) {
+  .favorites-section .quote {
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+  }
+  .favorites-section .word_part {
+    grid-column: 1/3;
+    grid-row: 1;
+  }
+  .favorites-section .quote_image_wrapper {
+    grid-column: 2;
+    grid-row: 2;
+    height: 141px;
+  }
+  .favorites-section .daily_norm {
+    grid-column: 1;
+    grid-row: 2;
+    height: 141px;
+    overflow: hidden;
+    padding: 20px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .favorites-section .quote {
+    max-width: 494px;
+    align-items: left;
+  }
+}
