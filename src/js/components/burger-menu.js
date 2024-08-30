@@ -1,4 +1,10 @@
-import { toggleModal } from './common.js';
+
+const toggleModal = (modalSelector) => {
+    modalSelector.classList.toggle('is-hidden');
+  
+    handleBodyOverflow(modalSelector);
+    handleZIndex(modalSelector);
+  };
 
 const refs = {
   openBurgerBtn: document.querySelector('[data-burger-open]'),
