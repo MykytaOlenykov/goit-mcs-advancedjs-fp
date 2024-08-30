@@ -1,9 +1,7 @@
 import { object, string, number } from 'yup';
+import { addExerciseRating } from '../services/api';
 
 let formSchema = object({
-  comment: string()
-    .required('Comment is required')
-    .min(10, 'Comment must be at least 10 characters'),
   email: string()
     .email('Please enter a valid email')
     .required('Email is required'),
@@ -49,26 +47,25 @@ async function formSubmitHandler(event) {
   const formElements = event.target.elements;
 
   const email = formElements.email.value;
-  const comment = formElements.comment.value;
+  const review = formElements.comment.value;
   const stars = parseInt(
     feedbackForm.querySelector('.modal-rating').textContent
   );
 
   feedbackForm.querySelector('#email-error').style.display = 'none';
-  feedbackForm.querySelector('#comment-error').style.display = 'none';
   feedbackForm.querySelector('#stars-error').style.display = 'none';
 
   try {
     const validatedData = await formSchema.validate(
       {
         email: email,
-        comment: comment,
+        review: review,
         stars: stars,
       },
       { abortEarly: false }
     );
-    console.log('Validated Data:', validatedData);
     refs.modal.classList.add('is-hidden');
+    addExerciseRating('1', validatedData);
   } catch (err) {
     const errors = {};
     err.inner.forEach(error => {
@@ -76,7 +73,6 @@ async function formSubmitHandler(event) {
         errors[error.path] = error.message;
       }
     });
-    console.log(errors);
     if (errors['email']) {
       feedbackForm.querySelector('#email-error').textContent = errors['email'];
       feedbackForm.querySelector('#email-error').style.display = 'block';

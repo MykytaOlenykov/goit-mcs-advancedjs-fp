@@ -52,7 +52,6 @@
 
 .modal input[type='email'] {
   margin-top: 32px;
-  margin-bottom: 16px;
   width: 100%;
   display: inline-flex;
   padding: 12px 14px;
@@ -64,8 +63,9 @@
 }
 
 .modal textarea {
+  margin-top: 16px;
   width: 100%;
-  display: inline-flex;
+  display: block;
   padding: 12px 14px;
   align-items: center;
   border-radius: 15px;
@@ -104,13 +104,14 @@
 
 /* Error message */
 .error-message {
+  margin-top: 6px;
   color: #f5004f;
-  margin-bottom: 16px;
   font-size: 18px;
   display: none;
 }
 
 .error-message-stars {
+  margin-top: 6px;
   color: #f5004f;
   font-size: 18px;
   display: none;
