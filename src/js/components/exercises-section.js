@@ -1,6 +1,6 @@
 import Pagination from 'tui-pagination';
 import { getFilters, getExercises } from '../services/api';
-import { draw_exercies, draw_filters } from './draw-filters';
+import { draw_exercies, draw_filters, remove_filters, remove_exercies } from './draw-filters';
 
 document.addEventListener('DOMContentLoaded', () => {
   const elements = {
@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ),
     breadcrumbsSubtitle: document.querySelector('#exercises-breadcrumbs p'),
     paginationContainer: document.querySelector('#tui-pagination-container'),
+    loader: document.querySelector('#loader'),
   };
 
   const filtersPerPage = 12;
@@ -33,6 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
     'Body parts': 'bodypart',
   };
 
+  const removePagination = () => {
+    elements.paginationContainer.classList.add('hidden');
+    elements.paginationContainer.innerHTML = '';
+  }
+
   const capitalizeFirstLetter = string =>
     string.charAt(0).toUpperCase() + string.slice(1);
 
@@ -44,6 +50,13 @@ document.addEventListener('DOMContentLoaded', () => {
       clearTimeout(timeout);
       timeout = setTimeout(() => func.apply(context, args), delay);
     };
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   const initializePagination = (totalPages, perPage) => {
@@ -68,16 +81,19 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           fetchAndDrawFilters(selectedCategory);
         }
+
+        scrollToTop();
       });
     } else {
-      elements.paginationContainer.classList.add('hidden');
-      elements.paginationContainer.innerHTML = '';
+      removePagination();
     }
   };
 
   const fetchAndDrawFilters = async (category = 'Muscles') => {
-    exersice.classList.remove('exercises__cards-wrkt'); 
-    
+    remove_filters();
+    removePagination();
+    elements.loader.classList.remove('hidden');
+
     try {
       const { results, totalPages } = await getFilters({
         params: {
@@ -95,16 +111,24 @@ document.addEventListener('DOMContentLoaded', () => {
       initializePagination(totalPages, filtersPerPage);
     } catch (error) {
       console.error('Error fetching filters:', error);
+    } finally {
+      elements.loader.classList.add('hidden');
     }
   };
 
   const fetchAndDrawExercises = async params => {
+    remove_exercies();
+    removePagination();
+    elements.loader.classList.remove('hidden');
+
     try {
       const { results, totalPages } = await getExercises({ params });
       draw_exercies(results);
       initializePagination(totalPages, exercisesPerPage);
     } catch (error) {
       console.error('Error fetching exercises:', error);
+    } finally {
+      elements.loader.classList.add('hidden');
     }
   };
 
@@ -134,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     currentPage = 1;
 
+    scrollToTop();
     await fetchAndDrawExercises({
       [categoriesToFiltersMap[selectedCategory]]: selectedPart,
       page: currentPage,

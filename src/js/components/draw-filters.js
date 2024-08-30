@@ -1,6 +1,11 @@
 const cardList = document.querySelector('.exercises__cards');
 const cardListEmpty = document.querySelector('.exercises__cards-empty');
 
+export function remove_filters() {
+  cardList.innerHTML = '';
+  cardList.classList.remove('exercises__cards-wrkt');
+}
+
 export function draw_filters(cards) {
   cardListEmpty.classList.add('hidden');
 
@@ -28,6 +33,11 @@ export function draw_filters(cards) {
   cardList.innerHTML = markup;
 }
 
+export function remove_exercies() {
+  cardList.innerHTML = '';
+  cardList.classList.remove('exercises__cards-wrkt');
+}
+
 export function draw_exercies(keyword) {
   cardListEmpty.classList.add('hidden');
 
@@ -39,12 +49,12 @@ export function draw_exercies(keyword) {
         <span class="exercises__name-tag">Workout</span>
         <span class="exercises__name-rating">${key.rating}</span>
         <button class="exercises__name-btn" type="button" data-modal-open="">Start</button>
-        
+
           <svg class="exercises__name-icon" width="16" height="16" style="stroke: black;">
             <use href="./assets/icons/icons-sprite.svg#arrow"></use>
           </svg>
-        
-        
+
+
         </div>
 
         <div class="exercises__name-h3-wraper">
@@ -73,6 +83,6 @@ export function draw_exercies(keyword) {
     return;
   }
 
-  cardList.classList.add('exercises__cards-wrkt');  
+  cardList.classList.add('exercises__cards-wrkt');
   cardList.innerHTML = markup_exercies;
 }

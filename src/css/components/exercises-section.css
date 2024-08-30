@@ -65,7 +65,10 @@
 
 .exercises__btn-smpl {
   border: none;
+  background-color: transparent;
   opacity: 0.6;
+  line-height: 24px;
+  padding-bottom: 4px;
 }
 
 .exercises__btn-smpl.active {
@@ -191,12 +194,12 @@
 
     display: grid;
     gap: 32px 15px;
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(3, 1fr);
 
   }
 
   .exercises__cards.exercises__cards-wrkt {
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
     /* grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));  */
   }
 
