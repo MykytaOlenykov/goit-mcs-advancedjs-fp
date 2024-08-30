@@ -1,1 +1,124 @@
-<p>header</p>
+<div class="container">
+<div class="header header--desktop">
+    <nav class="header__nav--logo">
+        <a href="#">
+          <img src="../assets/images/logo.png" alt="GoIT logo">
+        </a>
+    </nav>
+    <nav>
+      <ul class="header__nav--links">
+        <li>
+          <a class="js-anchor header__nav--link--active link--active" href="#home">Home</a>
+        </li>
+        <li>
+          <a class="js-anchor header__nav--link" href="#favorites">Favorites</a>
+        </li>
+      </ul>
+    </nav>
+    <ul class="header__socials">
+      <li>
+        <a class ="header__socials--link"
+          href="https://www.facebook.com/goITclub/"
+          target="_blank"
+          aria-label="Facebook"
+          rel="noopener noreferrer nofollow"
+        >
+          <svg class="header__socials--svg">
+            <use href="./assets/icons/icons-sprite.svg#facebook"></use>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a class ="header__socials--link"
+          href="https://www.instagram.com/goitclub/"
+          target="_blank"
+          aria-label="Instagram"
+          rel="noopener noreferrer nofollow"
+        >
+          <svg class="header__socials--svg">
+            <use href="./assets/icons/icons-sprite.svg#instagram"></use>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a class ="header__socials--link"
+          href="https://www.youtube.com/c/GoIT"
+          target="_blank"
+          aria-label="YouTube"
+          rel="noopener noreferrer nofollow"
+        >
+          <svg class="header__socials--svg">
+            <use href="./assets/icons/icons-sprite.svg#youtube"></use>
+          </svg>    
+        </a>
+      </li>
+    </ul>
+
+    <button
+      class="header__burger-btn"
+      data-burger-open
+      aria-label="Button for open mobile menu"
+    >
+      <svg >
+        <path d="M28 13.3334H4" stroke="#242424" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M28 8H4" stroke="#242424" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M28 18.6666H4" stroke="#242424" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M28 24H4" stroke="#242424" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="header__menu-overlay is-hidden" data-burger>
+      <button
+        class="header__close--btn"
+        data-burger-close
+        aria-label="Button for close mobile menu"
+      >
+        <svg  class="header__close--btn--svg" >
+          <path d="M1 1L17 17" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M17 1L1 17" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <ul class="header__mobile--nav--links">
+        <li><a href="#home">Home</li>
+        <li><a href="#favorites">Favorites</li>
+      </ul>
+      <ul class="header__mobile--socials">
+        <li>
+          <a class="header__mobile--socials--link"
+            href="https://www.facebook.com/goITclub/"
+            target="_blank"
+            aria-label="Facebook"
+            rel="noopener noreferrer nofollow"
+          >
+            <svg class="header__mobile--socials--svg">
+                <use href="./assets/icons/icons-sprite.svg#facebook"></use>   </svg>
+          </a>
+        </li>
+        <li>
+          <a class="header__mobile--socials--link"
+            href="https://www.instagram.com/goitclub/"
+            target="_blank"
+            aria-label="Instagram"
+            rel="noopener noreferrer nofollow"
+          >
+          <svg class="header__mobile--socials--svg">
+            <use href="./assets/icons/icons-sprite.svg#instagram"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a class="header__mobile--socials--link"
+            href="https://www.youtube.com/c/GoIT"
+            target="_blank"
+            aria-label="YouTube"
+            rel="noopener noreferrer nofollow"
+          >
+            <svg class="header__mobile--socials--svg">
+              <use href="./assets/icons/icons-sprite.svg#youtube"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+  </div>
+</div>
+</div>
