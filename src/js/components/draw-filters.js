@@ -1,6 +1,9 @@
 const cardList = document.querySelector('.exercises__cards');
+const cardListEmpty = document.querySelector('.exercises__cards-empty');
 
-export default function draw_filters(cards) {
+export function draw_filters(cards) {
+  cardListEmpty.classList.add('hidden');
+
   const markup = cards
     .map(
       card =>
@@ -25,12 +28,13 @@ export default function draw_filters(cards) {
   cardList.innerHTML = markup;
 }
 
-
 export function draw_exercies(keyword) {
+  cardListEmpty.classList.add('hidden');
+
   const markup_exercies = keyword
-  .map(
-    key => 
-      `<li class="exercises__name">
+    .map(
+      key =>
+        `<li class="exercises__name">
           <span>Workout</span>
           ${key.rating}
 
@@ -40,13 +44,21 @@ export function draw_exercies(keyword) {
           <li>BurnedCalories${key.burnedCalories}</li>
           <li>Body part${key.bodyPart}</li>
           <li>Target${key.target}</li>
-          
-          
+
+
           </ul>
-            
+
         </li>
         `
-  ).join('');
+    )
+    .join('');
+
+  if (keyword.length === 0) {
+    cardList.innerHTML = '';
+    cardListEmpty.classList.remove('hidden');
+    cardListEmpty.innerHTML = 'No exercises found';
+    return;
+  }
 
   cardList.innerHTML = markup_exercies;
 }

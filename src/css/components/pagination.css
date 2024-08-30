@@ -1,0 +1,29 @@
+.tui-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tui-page-btn {
+  font-size: 20px;
+  color: var(--light);
+}
+
+.tui-is-selected {
+  width: 31px;
+  height: 31px;
+  border: 1px solid var(--black);
+  padding: 6px;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.tui-ico-first,
+.tui-prev,
+.tui-next,
+.tui-last {
+  display: none;
+}
