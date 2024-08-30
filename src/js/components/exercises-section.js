@@ -1,6 +1,11 @@
 import Pagination from 'tui-pagination';
 import { getFilters, getExercises } from '../services/api';
-import { draw_exercies, draw_filters, remove_filters, remove_exercies } from './draw-filters';
+import {
+  draw_exercies,
+  draw_filters,
+  remove_filters,
+  remove_exercies,
+} from './draw-filters';
 
 document.addEventListener('DOMContentLoaded', () => {
   const elements = {
@@ -9,9 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     searchBtnClear: document.querySelector('#search-btn-clear'),
     searchForm: document.querySelector('#search-form'),
     searchInput: document.querySelector('#search-input'),
-    breadcrumbsTitle: document.querySelector(
-      '#exercises-breadcrumbs h2'
-    ),
+    breadcrumbsTitle: document.querySelector('#exercises-breadcrumbs h2'),
     breadcrumbsTitleDivider: document.querySelector(
       '#exercises-breadcrumbs span'
     ),
@@ -37,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const removePagination = () => {
     elements.paginationContainer.classList.add('hidden');
     elements.paginationContainer.innerHTML = '';
-  }
+  };
 
   const capitalizeFirstLetter = string =>
     string.charAt(0).toUpperCase() + string.slice(1);
@@ -55,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   };
 
