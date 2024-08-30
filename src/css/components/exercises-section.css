@@ -176,11 +176,22 @@
 
 @media only screen and (min-width: 768px) {
   .exercises__cards {
+
     display: grid;
     gap: 32px 15px;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); 
+
   }
+
+  .exercises__cards.exercises__cards-wrkt {
+    grid-template-columns: repeat(2, 1fr); 
+    /* grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));  */
+  }
+
+
 }
+
+
 
 .exercises__cards-link {
   display: block;
