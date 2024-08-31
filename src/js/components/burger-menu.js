@@ -1,28 +1,19 @@
-const toggleModal = modalSelector => {
-  modalSelector.classList.toggle('is-hidden');
+const mobileMenu = document.querySelector('[data-burger]');
+const openMenuBtn = document.querySelector('[data-burger-open]');
+const closeMenuBtn = document.querySelector('[data-burger-close]');
+
+const toggleMenu = () => {
+  const isMenuOpen =
+    openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
+  openMenuBtn.setAttribute('aria-expanded', !isMenuOpen);
+  mobileMenu.classList.toggle('menu-is-hidden');
 };
 
-const refs = {
-  openBurgerBtn: document.querySelector('[data-burger-open]'),
-  closeBurgerBtn: document.querySelector('[data-burger-close]'),
-  burgerMenu: document.querySelector('[data-burger]'),
-  body: document.querySelector('body'),
-};
+openMenuBtn.addEventListener('click', toggleMenu);
+closeMenuBtn.addEventListener('click', toggleMenu);
 
-refs.openBurgerBtn.addEventListener('click', () =>
-  toggleModal(refs.burgerMenu)
-);
-refs.closeBurgerBtn.addEventListener('click', () =>
-  toggleModal(refs.burgerMenu)
-);
-
-window.addEventListener('click', e => {
-  if (
-    refs.burgerMenu.classList.contains('is-hidden') ||
-    refs.openBurgerBtn.contains(e.target)
-  ) {
-    return;
-  }
-
-  toggleModal(refs.burgerMenu);
+window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
+  if (!e.matches) return;
+  mobileMenu.classList.add('menu-is-hidden');
+  openMenuBtn.setAttribute('aria-expanded', false);
 });
