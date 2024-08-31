@@ -5,23 +5,30 @@ let formSchema = object({
   email: string()
     .email('Please enter a valid email')
     .required('Email is required'),
-  stars: number()
+  rate: number()
     .required('Rating is required')
     .min(1, 'Rating must be between 1 and 5')
     .max(5, 'Rating must be between 1 and 5'),
+  review: string().trim().required('Comment is required.'),
 });
 
 const refs = {
-  // openModalBtn: document.querySelector('[data-modal-open]'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   modal: document.querySelector('[data-modal]'),
 };
 
-function toggleModal() {
-  refs.modal.classList.toggle('is-hidden');
+let currentExerciseId = null;
+
+export function openFeedbackModal({ exerciseId }) {
+  currentExerciseId = exerciseId;
+  refs.modal.classList.remove('is-hidden');
 }
 
-refs.closeModalBtn.addEventListener('click', toggleModal);
+function closeFeedbackModal() {
+  refs.modal.classList.add('is-hidden');
+}
+
+refs.closeModalBtn.addEventListener('click', closeFeedbackModal);
 
 document.querySelectorAll('.modal-star').forEach(star => {
   star.addEventListener('click', event => {
@@ -58,14 +65,14 @@ async function formSubmitHandler(event) {
   try {
     const validatedData = await formSchema.validate(
       {
-        email: email,
-        review: review,
-        stars: stars,
+        email,
+        review,
+        rate: stars,
       },
       { abortEarly: false }
     );
     refs.modal.classList.add('is-hidden');
-    addExerciseRating('1', validatedData);
+    addExerciseRating({ exerciseId: currentExerciseId, body: validatedData });
   } catch (err) {
     const errors = {};
     err.inner.forEach(error => {
@@ -77,13 +84,13 @@ async function formSubmitHandler(event) {
       feedbackForm.querySelector('#email-error').textContent = errors['email'];
       feedbackForm.querySelector('#email-error').style.display = 'block';
     }
-    if (errors['comment']) {
+    if (errors['review']) {
       feedbackForm.querySelector('#comment-error').textContent =
-        errors['comment'];
+        errors['review'];
       feedbackForm.querySelector('#comment-error').style.display = 'block';
     }
-    if (errors['stars']) {
-      feedbackForm.querySelector('#stars-error').textContent = errors['stars'];
+    if (errors['rate']) {
+      feedbackForm.querySelector('#stars-error').textContent = errors['rate'];
       feedbackForm.querySelector('#stars-error').style.display = 'block';
     }
   }
@@ -92,5 +99,3 @@ async function formSubmitHandler(event) {
 document
   .querySelector('.modal-form')
   .addEventListener('submit', formSubmitHandler);
-
-export default toggleModal;
