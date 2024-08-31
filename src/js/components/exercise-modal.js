@@ -74,9 +74,9 @@ function unmountExerciseCard() {
 function closeExerciseModal() {
   exerciseModalBackdropRef.classList.add(EXERCISE_MODAL_BACKDROP_HIDDEN_CLASS);
   setTimeout(() => {
+    unmountExerciseCard();
     currentExercise = null;
     exerciseModalContentRef.innerHTML = '';
-    unmountExerciseCard();
   }, 500);
 }
 
@@ -124,7 +124,9 @@ function renderExerciseCard({
 
         <p class="exercise-modal__desc">${description}</p>
 
-        ${renderExerciseActionBar({ exerciseId: _id })}
+        <div class="js-action-bar-wrapper">
+            ${renderExerciseActionBar({ exerciseId: _id })}
+        </div>
       </div>
   `;
 }
@@ -222,27 +224,16 @@ function renderExerciseActionBar({ exerciseId }) {
     `;
 }
 
-function renderActionButton({ type = '', className = '', children = '' }) {
-  return `
-        <button
-            class="exercise-modal__btn exercise-modal__btn--${type} ${className}"
-            type="button"
-          >
-            ${children}
-        </button>
-    `;
-}
+function refreshActionBar() {
+  const actionBarRef = exerciseModalContentRef.querySelector(
+    '.js-action-bar-wrapper'
+  );
 
-function getActionButtonsRefs() {
-  const actionBarRef = document.querySelector('.exercise-modal__action-bar');
-
-  return {
-    favoriteAddButtonRef: actionBarRef.querySelector('.js-favorite-add-btn'),
-    favoriteRemoveButtonRef: actionBarRef.querySelector(
-      '.js-favorite-remove-btn'
-    ),
-    ratingButtonRef: actionBarRef.querySelector('.js-rating-btn'),
-  };
+  unmountActionBar();
+  actionBarRef.innerHTML = renderExerciseActionBar({
+    exerciseId: currentExercise._id,
+  });
+  mountActionBar();
 }
 
 function mountActionBar() {
@@ -263,10 +254,37 @@ function unmountActionBar() {
   //   ratingButtonRef?.removeEventListener('click');
 }
 
+function renderActionButton({ type = '', className = '', children = '' }) {
+  return `
+        <button
+            class="exercise-modal__btn exercise-modal__btn--${type} ${className}"
+            type="button"
+          >
+            ${children}
+        </button>
+    `;
+}
+
+function getActionButtonsRefs() {
+  const actionBarRef = exerciseModalContentRef.querySelector(
+    '.exercise-modal__action-bar'
+  );
+
+  return {
+    favoriteAddButtonRef: actionBarRef.querySelector('.js-favorite-add-btn'),
+    favoriteRemoveButtonRef: actionBarRef.querySelector(
+      '.js-favorite-remove-btn'
+    ),
+    ratingButtonRef: actionBarRef.querySelector('.js-rating-btn'),
+  };
+}
+
 function addFavoriteExercise() {
   favoritesExercisesStore.addFavoriteExercise(currentExercise);
+  refreshActionBar();
 }
 
 function removeFavoriteExercise() {
   favoritesExercisesStore.removeFavoriteExercise(currentExercise?._id);
+  refreshActionBar();
 }

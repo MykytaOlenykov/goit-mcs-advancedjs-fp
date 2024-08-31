@@ -15,7 +15,7 @@ class FavoritesExercisesStore {
   }
 
   addFavoriteExercise(exercise) {
-    if (isFavoriteExercise(exercise._id)) return;
+    if (this.isFavoriteExercise(exercise._id)) return;
     this.#favoritesExercises.push(exercise);
     this.#saveFavoritesExercisesToLS();
   }
