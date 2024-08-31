@@ -123,6 +123,16 @@
   text-overflow: ellipsis;
 }
 
+@media screen and (max-width: 1439px) {
+  .word_part {
+    height: 100%;
+  }
+
+  .quote_image_wrapper {
+    height: 100%;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .quote {
     display: grid;
@@ -134,7 +144,6 @@
   }
 
   .word_part {
-    height: 100%;
     border-radius: 20px;
 
     background-color: #242424;
@@ -146,10 +155,6 @@
   .div_quote_text {
     position: relative;
     width: 100%;
-  }
-
-  .quote_image_wrapper {
-    height: 100%;
   }
 
   .quote_image {
