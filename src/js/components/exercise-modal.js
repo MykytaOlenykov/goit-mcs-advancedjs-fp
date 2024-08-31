@@ -1,4 +1,5 @@
 import { getExerciseById } from '../services/api';
+import svgSprite from '../../assets/icons/icons-sprite.svg';
 
 const exercisesListRef = document.querySelector('.js-exercises-cards');
 const exerciseModalBackdropRef = document.querySelector(
@@ -140,7 +141,7 @@ function renderRatingStar({ isActive }) {
         <svg class="exercise-modal__rating-star ${
           isActive ? 'exercise-modal__rating-star--accent' : ''
         }">
-            <use href="./assets/icons/icons-sprite.svg#star"></use>
+            <use href="${svgSprite}#star"></use>
         </svg>
     `;
 }
