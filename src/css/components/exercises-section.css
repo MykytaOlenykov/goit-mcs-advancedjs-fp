@@ -66,6 +66,7 @@
 .exercises__btn-smpl {
   border: none;
   background-color: transparent;
+  padding: 0;
   opacity: 0.6;
   line-height: 24px;
   padding-bottom: 4px;
@@ -198,7 +199,6 @@
 
   .exercises__cards.exercises__cards-wrkt {
     grid-template-columns: repeat(2, 1fr);
-    /* grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));  */
   }
 }
 

@@ -40,13 +40,22 @@
     }
 }
 
-
 .exercises__name-wraper-1 {
   display: flex;
   gap: 16px;
   align-items: center;
   padding-bottom: 25px;
   position: relative;
+}
+
+.exercises__name-rating {
+  display: inline-flex;
+  gap: 2px;
+  align-items: center; 
+}
+
+.exersize__star-icon {
+  fill: var(--orange);
 }
 
 .exercises__name-tag {
@@ -62,6 +71,7 @@
   margin-right: 24px;
   border: none;
   background-color: transparent;
+  padding: 0;
 }
 
 .exercises__name-icon {
@@ -95,6 +105,8 @@
 
 .exercises__name-h3-wraper {
   position: relative;
+  display: flex;
+
 }
 
 .exersize__h3-icon-wraper {
@@ -112,6 +124,8 @@
 
 .exersize__h3-icon {
   fill: var(--white);
+  position: absolute;
+  
 }
 
 .exercises__name-props {

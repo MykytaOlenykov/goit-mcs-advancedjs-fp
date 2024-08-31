@@ -1,3 +1,5 @@
+import svgSprite from '../../assets/icons/icons-sprite.svg';
+
 const cardList = document.querySelector('.exercises__cards');
 const cardListEmpty = document.querySelector('.exercises__cards-empty');
 
@@ -47,23 +49,28 @@ export function draw_exercies(keyword) {
         `<li class="exercises__name">
        <div class="exercises__name-wraper-1">
         <span class="exercises__name-tag">Workout</span>
-        <span class="exercises__name-rating">${key.rating}</span>
-        <button class="exercises__name-btn" type="button" data-modal-open="${key._id}">Start</button>
+        <span class="exercises__name-rating">${key.rating}
+            <svg class="exersize__star-icon" width="18" height="18">
+              <use href="${svgSprite}#star"></use>
+            </svg>
+        </span>
+
+        <button class="exercises__name-btn" type="button" data-modal-open="${key._id}">Start
 
           <svg class="exercises__name-icon" width="16" height="16" style="stroke: black;">
-            <use href="./assets/icons/icons-sprite.svg#arrow"></use>
+            
+            <use href="${svgSprite}#arrow"></use>
           </svg>
-
-
+          </button>
         </div>
 
         <div class="exercises__name-h3-wraper">
-        <h3 class="exercises__name-h3">${key.name}</h3>
-        <div class="exersize__h3-icon-wraper">
-          <svg class="exersize__h3-icon" width="18" height="18">
-            <use href="../assets/icons/icons-sprite.svg#runner"></use>
-          </svg>
-        </div>
+          <h3 class="exercises__name-h3">${key.name}</h3>
+          <div class="exersize__h3-icon-wraper">
+            <svg class="exersize__h3-icon" width="18" height="18">
+              <use href="${svgSprite}#runner"></use>
+            </svg>
+          </div>
         </div>
 
         <ul class="exercises__name-props" >
