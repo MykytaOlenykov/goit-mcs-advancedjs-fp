@@ -6,6 +6,7 @@ import {
   remove_filters,
   remove_exercies,
 } from './draw-filters';
+import svgSprite from '../../assets/icons/icons-sprite.svg';
 
 document.addEventListener('DOMContentLoaded', () => {
   const elements = {
@@ -70,13 +71,13 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const getMovePageBtn = (type, isDisabled = false) => {
-    return (
-      `<a href="#" class="tui-page-btn tui-${type} ${isDisabled ? 'tui-is-disabled' : ''}">
+    return `<a href="#" class="tui-page-btn tui-${type} ${
+      isDisabled ? 'tui-is-disabled' : ''
+    }">
         <svg width="20" height="20">
-          <use href="./assets/icons/icons-sprite.svg#${paginationIconsMap[type]}"></use>
+          <use href="${svgSprite}#${paginationIconsMap[type]}"></use>
         </svg>
-      </a>`
-    );
+      </a>`;
   };
 
   const initializePagination = (totalPages, perPage) => {
@@ -89,12 +90,12 @@ document.addEventListener('DOMContentLoaded', () => {
         visiblePages: visiblePagesPagination,
         page: currentPage,
         template: {
-          moveButton: (data) => {
+          moveButton: data => {
             const { type } = data;
 
             return getMovePageBtn(type);
           },
-          disabledMoveButton: (data) => {
+          disabledMoveButton: data => {
             const { type } = data;
 
             return getMovePageBtn(type, true);
