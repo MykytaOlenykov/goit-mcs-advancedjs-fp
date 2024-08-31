@@ -26,8 +26,10 @@ export function openFeedbackModal({ exerciseId }) {
 
 function closeFeedbackModal() {
   refs.modal.classList.add('is-hidden');
+  resetForm();
 }
 
+const formRef = document.querySelector('.modal-form');
 refs.closeModalBtn.addEventListener('click', closeFeedbackModal);
 
 document.querySelectorAll('.modal-star').forEach(star => {
@@ -37,7 +39,7 @@ document.querySelectorAll('.modal-star').forEach(star => {
     document.querySelectorAll('.modal-star').forEach(star => {
       const value = star.dataset.value;
       if (value <= starValue) {
-        star.querySelector('svg').style.fill = 'gold';
+        star.querySelector('svg').style.fill = '#eea10c';
       } else {
         star.querySelector('svg').style.fill = 'rgba(244, 244, 244, 0.20)';
       }
@@ -50,17 +52,14 @@ document.querySelectorAll('.modal-star').forEach(star => {
 
 async function formSubmitHandler(event) {
   event.preventDefault();
-  const feedbackForm = document.querySelector('.modal-form');
   const formElements = event.target.elements;
 
   const email = formElements.email.value;
   const review = formElements.comment.value;
-  const stars = parseInt(
-    feedbackForm.querySelector('.modal-rating').textContent
-  );
+  const stars = parseInt(formRef.querySelector('.modal-rating').textContent);
 
-  feedbackForm.querySelector('#email-error').style.display = 'none';
-  feedbackForm.querySelector('#stars-error').style.display = 'none';
+  formRef.querySelector('#email-error').style.display = 'none';
+  formRef.querySelector('#stars-error').style.display = 'none';
 
   try {
     const validatedData = await formSchema.validate(
@@ -73,6 +72,7 @@ async function formSubmitHandler(event) {
     );
     refs.modal.classList.add('is-hidden');
     addExerciseRating({ exerciseId: currentExerciseId, body: validatedData });
+    resetForm();
   } catch (err) {
     const errors = {};
     err.inner.forEach(error => {
@@ -81,21 +81,37 @@ async function formSubmitHandler(event) {
       }
     });
     if (errors['email']) {
-      feedbackForm.querySelector('#email-error').textContent = errors['email'];
-      feedbackForm.querySelector('#email-error').style.display = 'block';
+      formRef.querySelector('#email-error').textContent = errors['email'];
+      formRef.querySelector('#email-error').style.display = 'block';
     }
     if (errors['review']) {
-      feedbackForm.querySelector('#comment-error').textContent =
-        errors['review'];
-      feedbackForm.querySelector('#comment-error').style.display = 'block';
+      formRef.querySelector('#comment-error').textContent = errors['review'];
+      formRef.querySelector('#comment-error').style.display = 'block';
     }
     if (errors['rate']) {
-      feedbackForm.querySelector('#stars-error').textContent = errors['rate'];
-      feedbackForm.querySelector('#stars-error').style.display = 'block';
+      formRef.querySelector('#stars-error').textContent = errors['rate'];
+      formRef.querySelector('#stars-error').style.display = 'block';
     }
   }
 }
 
-document
-  .querySelector('.modal-form')
-  .addEventListener('submit', formSubmitHandler);
+formRef.addEventListener('submit', formSubmitHandler);
+
+function resetForm() {
+  formRef.reset();
+
+  // rating
+  document.querySelectorAll('.modal-star').forEach(star => {
+    star.querySelector('svg').style.fill = 'rgba(244, 244, 244, 0.20)';
+  });
+  const ratingDisplay = document.querySelector('.modal-rating');
+  ratingDisplay.textContent = `0.0`;
+
+  // errors
+  formRef.querySelector('#email-error').textContent = '';
+  formRef.querySelector('#email-error').style.display = 'none';
+  formRef.querySelector('#comment-error').textContent = '';
+  formRef.querySelector('#comment-error').style.display = 'none';
+  formRef.querySelector('#stars-error').textContent = '';
+  formRef.querySelector('#stars-error').style.display = 'none';
+}
