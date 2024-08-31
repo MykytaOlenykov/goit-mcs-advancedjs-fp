@@ -1,6 +1,16 @@
-const cardList = document.querySelector('.exercises__cards');
+import svgSprite from '../../assets/icons/icons-sprite.svg';
 
-export default function draw_filters(cards) {
+const cardList = document.querySelector('.exercises__cards');
+const cardListEmpty = document.querySelector('.exercises__cards-empty');
+
+export function remove_filters() {
+  cardList.innerHTML = '';
+  cardList.classList.remove('exercises__cards-wrkt');
+}
+
+export function draw_filters(cards) {
+  cardListEmpty.classList.add('hidden');
+
   const markup = cards
     .map(
       card =>
@@ -22,31 +32,43 @@ export default function draw_filters(cards) {
     )
     .join('');
 
-  cardList.classList.remove('exercises__cards-wrkt');
-
   cardList.innerHTML = markup;
 }
 
-export function draw_exercises(keyword) {
+export function remove_exercies() {
+  cardList.innerHTML = '';
+  cardList.classList.remove('exercises__cards-wrkt');
+}
+
+export function draw_exercies(keyword) {
+  cardListEmpty.classList.add('hidden');
+
   const markup_exercies = keyword
     .map(
       key =>
         `<li class="exercises__name">
        <div class="exercises__name-wraper-1">
         <span class="exercises__name-tag">Workout</span>
-        <span class="exercises__name-rating">${key.rating}</span>
-        <button class="exercises__name-btn" type="button" data-modal-open="">Start</button>
-        
+        <span class="exercises__name-rating">${key.rating}
+            <svg class="exersize__star-icon" width="18" height="18">
+              <use href="${svgSprite}#star"></use>
+            </svg>
+        </span>
+
+        <button class="exercises__name-btn" type="button" data-modal-open="${key._id}">Start
+
           <svg class="exercises__name-icon" width="16" height="16" style="stroke: black;">
-            <use href="./assets/icons/icons-sprite.svg#arrow"></use>
+            
+            <use href="${svgSprite}#arrow"></use>
           </svg>
+          </button>
         </div>
 
         <div class="exercises__name-h3-wraper">
           <h3 class="exercises__name-h3">${key.name}</h3>
           <div class="exersize__h3-icon-wraper">
             <svg class="exersize__h3-icon" width="18" height="18">
-              <use href="../assets/icons/icons-sprite.svg#runner"></use>
+              <use href="${svgSprite}#runner"></use>
             </svg>
           </div>
         </div>
@@ -61,7 +83,13 @@ export function draw_exercises(keyword) {
     )
     .join('');
 
-  cardList.classList.add('exercises__cards-wrkt');
+  if (keyword.length === 0) {
+    cardList.innerHTML = '';
+    cardListEmpty.classList.remove('hidden');
+    cardListEmpty.innerHTML = 'No exercises found';
+    return;
+  }
 
+  cardList.classList.add('exercises__cards-wrkt');
   cardList.innerHTML = markup_exercies;
 }

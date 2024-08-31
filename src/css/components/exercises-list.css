@@ -40,13 +40,22 @@
     }
 }
 
-
 .exercises__name-wraper-1 {
   display: flex;
   gap: 16px;
   align-items: center;
   padding-bottom: 25px;
   position: relative;
+}
+
+.exercises__name-rating {
+  display: inline-flex;
+  gap: 2px;
+  align-items: center; 
+}
+
+.exersize__star-icon {
+  fill: var(--orange);
 }
 
 .exercises__name-tag {
@@ -115,7 +124,6 @@
 
 .exersize__h3-icon {
   fill: var(--white);
-
   position: absolute;
   
 }

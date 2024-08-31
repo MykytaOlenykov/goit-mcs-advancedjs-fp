@@ -1,42 +1,69 @@
 <section id="exercises-section" class="section exercises-section">
   <div class="container">
     <div class="exersize__head-wraper">
-      <h2 class="section__title">Exercises<span class="section__title-suffix"></span></h2>
-      <form class="exersize__form js-search-form is-hidden">
-        <input class="exersize__search-input is-hidden" type="text" name="input_search" required="" placeholder="Search">
-        <svg class="exersize__search-icon" width="18" height="18">
-          <use href="../assets/icons/icons-sprite.svg#search"></use>
-        </svg>
-        
-      </form>
+      <div class="exercises__breadcrumbs" id="exercises-breadcrumbs">
+        <h2 class="section__title">
+          Exercises
+          <span class="hidden">/</span>
+        </h2>
+        <p class="exercises__subtitle hidden"></p>
+      </div>
 
       <!-- <load src="/partials/filters-list.html" /> -->
 
       <!--Buttons-->
-      <ul class="exercises__buttons">
-        <li class="exercises__btn-item">
-          <button class="exercises__btn-smpl active">Muscles</button>
-        </li>
-        <li class="exercises__btn-item">
-          <button class="exercises__btn-smpl">Body parts</button>
-        </li>
-        <li class="exercises__btn-item">
-          <button class="exercises__btn-smpl">Equipment</button>
-        </li>
-      </ul>
+      <div class="exercises__controls">
+        <div class="exercises__search-form hidden" id="search-form">
+          <input
+            type="text"
+            class="exercises__search"
+            placeholder="Search for"
+            id="search-input"
+          />
+
+          <div class="exercises__search-btns">
+            <button
+              type="reset"
+              class="exercises__search-btn hidden"
+              id="search-btn-clear"
+            >
+              <svg width="18" height="18" style="stroke: black">
+                <use href="./assets/icons/icons-sprite.svg#close"></use>
+              </svg>
+            </button>
+            <svg width="18" height="18" style="stroke: black">
+              <use href="./assets/icons/icons-sprite.svg#search"></use>
+            </svg>
+          </div>
+        </div>
+        <ul class="exercises__buttons">
+          <li class="exercises__btn-item">
+            <button class="exercises__btn-smpl active">Muscles</button>
+          </li>
+          <li class="exercises__btn-item">
+            <button class="exercises__btn-smpl">Body parts</button>
+          </li>
+          <li class="exercises__btn-item">
+            <button class="exercises__btn-smpl">Equipment</button>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <!-- cards -->
     <div class="exercises__cards-wraper">
-      <div>
-        <load src="/partials/sidebar-info.html" />
+      <div class="exercises__cards-container">
+        <load src="/partials/loader.html" />
+        <div class="exercises__cards-empty hidden"></div>
+
+        <ul class="exercises__cards js-exercises-cards"></ul>
+
+        <load src="/partials/pagination.html" />
       </div>
 
-      <ul class="exercises__cards"></ul>
-
       <load src="/partials/exercises-list.html" />
-    </div>
 
-    <load src="/partials/pagination.html" />
+      <load src="/partials/sidebar-info.html" />
+    </div>
   </div>
 </section>

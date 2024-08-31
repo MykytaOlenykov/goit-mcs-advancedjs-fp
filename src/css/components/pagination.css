@@ -1,0 +1,53 @@
+.tui-pagination {
+  --initialGap: 4px;
+  display: flex;
+  justify-content: center;
+  gap: var(--initialGap);
+}
+
+.tui-page-btn {
+  font-size: 20px;
+  color: var(--light);
+  margin: 0 calc(var(--initialGap) / 2);
+}
+
+.tui-is-selected,
+.tui-first,
+.tui-prev,
+.tui-next,
+.tui-last {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--black);
+  padding: 6px;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  fill: var(--black);
+}
+
+.tui-first,
+.tui-prev,
+.tui-next,
+.tui-last {
+  margin: 0;
+}
+
+.tui-prev {
+  margin-right: calc(20px - var(--initialGap));
+}
+
+.tui-next {
+  margin-left: calc(20px - var(--initialGap));
+}
+
+.tui-first.tui-is-disabled,
+.tui-prev.tui-is-disabled,
+.tui-next.tui-is-disabled,
+.tui-last.tui-is-disabled {
+  cursor: not-allowed;
+  border-color: #2424241A;
+  fill: #24242480;
+}
