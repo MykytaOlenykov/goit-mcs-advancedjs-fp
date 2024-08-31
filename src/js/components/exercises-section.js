@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const removePagination = () => {
-    elements.paginationContainer.classList.add('hidden');
+    elements.paginationContainer.classList.add('visually-hidden');
     elements.paginationContainer.innerHTML = '';
   };
 
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const initializePagination = (totalPages, perPage) => {
     if (totalPages > 1) {
-      elements.paginationContainer.classList.remove('hidden');
+      elements.paginationContainer.classList.remove('visually-hidden');
 
       paginationInstance = new Pagination(elements.paginationContainer, {
         totalItems: totalPages * perPage,
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const fetchAndDrawFilters = async (category = 'Muscles') => {
     remove_filters();
     removePagination();
-    elements.loader.classList.remove('hidden');
+    elements.loader.classList.remove('visually-hidden');
 
     try {
       const { results, totalPages } = await getFilters({
@@ -135,23 +135,23 @@ document.addEventListener('DOMContentLoaded', () => {
         },
       });
 
-      elements.searchForm.classList.add('hidden');
-      elements.breadcrumbsTitleDivider.classList.add('hidden');
-      elements.breadcrumbsSubtitle.classList.add('hidden');
+      elements.searchForm.classList.add('visually-hidden');
+      elements.breadcrumbsTitleDivider.classList.add('visually-hidden');
+      elements.breadcrumbsSubtitle.classList.add('visually-hidden');
 
       draw_filters(results);
       initializePagination(totalPages, filtersPerPage);
     } catch (error) {
       console.error('Error fetching filters:', error);
     } finally {
-      elements.loader.classList.add('hidden');
+      elements.loader.classList.add('visually-hidden');
     }
   };
 
   const fetchAndDrawExercises = async params => {
     remove_exercies();
     removePagination();
-    elements.loader.classList.remove('hidden');
+    elements.loader.classList.remove('visually-hidden');
 
     try {
       const { results, totalPages } = await getExercises({ params });
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       console.error('Error fetching exercises:', error);
     } finally {
-      elements.loader.classList.add('hidden');
+      elements.loader.classList.add('visually-hidden');
     }
   };
 
@@ -184,9 +184,9 @@ document.addEventListener('DOMContentLoaded', () => {
     elements.breadcrumbsSubtitle.textContent =
       capitalizeFirstLetter(selectedPart);
 
-    elements.breadcrumbsSubtitle.classList.remove('hidden');
-    elements.searchForm.classList.remove('hidden');
-    elements.breadcrumbsTitleDivider.classList.remove('hidden');
+    elements.breadcrumbsSubtitle.classList.remove('visually-hidden');
+    elements.searchForm.classList.remove('visually-hidden');
+    elements.breadcrumbsTitleDivider.classList.remove('visually-hidden');
 
     currentPage = 1;
 
@@ -200,9 +200,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const toggleSearchClearButton = () => {
     if (elements.searchInput.value.trim() !== '') {
-      elements.searchBtnClear.classList.remove('hidden');
+      elements.searchBtnClear.classList.remove('visually-hidden');
     } else {
-      elements.searchBtnClear.classList.add('hidden');
+      elements.searchBtnClear.classList.add('visually-hidden');
     }
   };
 
@@ -210,9 +210,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchValue = elements.searchInput.value;
 
     if (searchValue.trim() !== '') {
-      elements.searchBtnClear.classList.remove('hidden');
+      elements.searchBtnClear.classList.remove('visually-hidden');
     } else {
-      elements.searchBtnClear.classList.add('hidden');
+      elements.searchBtnClear.classList.add('visually-hidden');
     }
 
     currentPage = 1;
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const onClearSearchClick = () => {
     elements.searchInput.value = '';
     elements.searchInput.focus();
-    elements.searchBtnClear.classList.add('hidden');
+    elements.searchBtnClear.classList.add('visually-hidden');
 
     currentPage = 1;
 
