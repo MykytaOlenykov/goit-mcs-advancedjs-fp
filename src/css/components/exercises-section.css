@@ -16,6 +16,9 @@
     line-height: 1.09;
     letter-spacing: -0.02em;
   }
+  .exercises-section {
+    margin-bottom: 100px;
+  }
 }
 
 .exersize__head-wraper {
@@ -38,6 +41,10 @@
     flex-direction: row;
 
     padding-bottom: 32px;
+  }
+
+  .exercises-section {
+    margin-bottom: 132px;
   }
 }
 
@@ -106,7 +113,6 @@
 @media only screen and (min-width: 1440px) {
   .exercises__cards-wraper {
     grid-template-columns: 444px 1fr;
-    grid-template-rows: repeat(4, 242px);
     gap: 32px;
   }
 
