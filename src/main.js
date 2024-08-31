@@ -1,3 +1,4 @@
+import './js/components/feedback-modal';
 import './js/components/exercises-section';
 import './js/components/active-btn';
 import './js/components/sidebar-info';
