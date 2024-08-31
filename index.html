@@ -10,8 +10,8 @@
     <link rel="icon" type="image/svg+xml" href="/goit-mcs-advancedjs-fp/favicon.svg" />
     <script type="module" crossorigin src="/goit-mcs-advancedjs-fp/index.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-mcs-advancedjs-fp/assets/vendor-DHJPRCEW.js">
-    <link rel="modulepreload" crossorigin href="/goit-mcs-advancedjs-fp/assets/sidebar-info-CsoSyFEP.js">
-    <link rel="stylesheet" crossorigin href="/goit-mcs-advancedjs-fp/assets/index-Btq_Y_j-.css">
+    <link rel="modulepreload" crossorigin href="/goit-mcs-advancedjs-fp/assets/sidebar-info-BXbJt8hF.js">
+    <link rel="stylesheet" crossorigin href="/goit-mcs-advancedjs-fp/assets/index-mrdiYZfC.css">
   </head>
   <body>
     <p>header</p>
@@ -79,7 +79,7 @@
 
         <div class="exercises__cards-empty hidden"></div>
 
-        <ul class="exercises__cards"></ul>
+        <ul class="exercises__cards js-exercises-cards"></ul>
 
         <div id="tui-pagination-container" class="tui-pagination"></div>
       </div>
@@ -137,7 +137,22 @@
 
     <p>footer</p>
 
-    <p>exercise-modal</p>
+    <div class="exercise-modal-backdrop exercise-modal-backdrop--is-hidden">
+  <div class="exercise-modal">
+    <button
+      class="exercise-modal__close-btn"
+      type="button"
+      aria-label="Close modal"
+    >
+      <svg>
+        <use href="/goit-mcs-advancedjs-fp/assets/icons-sprite-CpMKLgGQ.svg#close"></use>
+      </svg>
+    </button>
+
+    <div class="exercise-modal__content"></div>
+  </div>
+</div>
+;
 
 
     <svg width="20" height="20" style="stroke: black">
