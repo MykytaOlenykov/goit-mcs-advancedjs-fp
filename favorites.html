@@ -7,10 +7,11 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0"
     />
     <title>Favorites</title>
-    <script type="module" crossorigin src="/goit-mcs-advancedjs-fp/assets/vendor-BLGQS8uP.js"></script>
-    <script type="module" crossorigin src="/goit-mcs-advancedjs-fp/assets/sidebar-info-lXhGjFPQ.js"></script>
+    <script type="module" crossorigin src="/goit-mcs-advancedjs-fp/favorites.js"></script>
+    <link rel="modulepreload" crossorigin href="/goit-mcs-advancedjs-fp/assets/vendor-ClsCxivM.js">
+    <link rel="modulepreload" crossorigin href="/goit-mcs-advancedjs-fp/assets/exercise-modal-DK6FDfNi.js">
     <link rel="stylesheet" crossorigin href="/goit-mcs-advancedjs-fp/assets/vendor-DnveWo0P.css">
-    <link rel="stylesheet" crossorigin href="/goit-mcs-advancedjs-fp/assets/favorites-AIddVSIg.css">
+    <link rel="stylesheet" crossorigin href="/goit-mcs-advancedjs-fp/assets/favorites-BRK-PWFI.css">
   </head>
   <body>
     <header>
@@ -155,9 +156,26 @@
   </div>
 </header>
 
-    <p>favorites-section</p>
-<div class="container favorites-section">
-  <div class="quote">
+    <div class="favorites-section">
+  <div class="container">
+    <h2 class="section__title">
+      Favorites
+    </h2>
+
+    <div class="exercises__cards-wraper">
+      <div class="exercises__cards-container">
+        <div class="loader-wrapper visually-hidden" id="loader">
+  <div class="loader"></div>
+</div>
+
+        <div class="exercises__cards-empty visually-hidden"></div>
+
+        <ul class="exercises__cards js-exercises-cards"></ul>
+      </div>
+
+        
+
+      <div class="quote">
   <div class="word_part">
     <div class="icon-wrapper-runner">
       <svg class="quote_runner_icon" width="18" height="20">
@@ -202,9 +220,9 @@
   </div>
 </div>
 
-    
+    </div>
+  </div>
 </div>
-
     <div class="exercise-modal-backdrop exercise-modal-backdrop--is-hidden">
   <div class="exercise-modal">
     <button
@@ -221,6 +239,67 @@
   </div>
 </div>
 
+    <div id="myModal" class="modal is-hidden" data-modal>
+    <div class="modal-content">
+        <span class="modal-close-btn" data-modal-close>
+            <svg width="20" height="20" style="stroke: #F4F4F4">
+                <use href="/goit-mcs-advancedjs-fp/assets/icons-sprite-IovVlU0g.svg#close"></use>
+            </svg></span>
+        <form class="modal-form" novalidate>
+            <h2 class="rating-title">Rating</h2>
+            <div class="modal-rating-container">
+                <div class="modal-rating">0.0</div>
+                <div class="modal-stars">
+                    <ul>
+                        <li class="modal-star" data-value="1"><svg width="20" height="20"
+                                style="fill: rgba(244, 244, 244, 0.2);">
+                                <use href="/goit-mcs-advancedjs-fp/assets/icons-sprite-IovVlU0g.svg#star"></use>
+                            </svg>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="modal-star" data-value="2"><svg width="20" height="20"
+                                style="fill: rgba(244, 244, 244, 0.20);">
+                                <use href="/goit-mcs-advancedjs-fp/assets/icons-sprite-IovVlU0g.svg#star"></use>
+                            </svg>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="modal-star" data-value="3"><svg width="20" height="20"
+                                style="fill: rgba(244, 244, 244, 0.20);">
+                                <use href="/goit-mcs-advancedjs-fp/assets/icons-sprite-IovVlU0g.svg#star"></use>
+                            </svg>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="modal-star" data-value="4"><svg width="20" height="20"
+                                style="fill: rgba(244, 244, 244, 0.20);">
+                                <use href="/goit-mcs-advancedjs-fp/assets/icons-sprite-IovVlU0g.svg#star"></use>
+                            </svg>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="modal-star" data-value="5"><svg width="20" height="20"
+                                style="fill: rgba(244, 244, 244, 0.20);">
+                                <use href="/goit-mcs-advancedjs-fp/assets/icons-sprite-IovVlU0g.svg#star"></use>
+                            </svg>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p class="error-message-stars" id="stars-error"></p>
+            <div class="modal-form-group">
+                <input type="email" name="email" placeholder="Email">
+                <p class="error-message" id="email-error"></p>
+            </div>
+            <div class="modal-form-group">
+                <textarea name="comment" placeholder="Your comment"></textarea>
+                <p class="error-message" id="comment-error"></p>
+            </div>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</div>
 
   </body>
 </html>
