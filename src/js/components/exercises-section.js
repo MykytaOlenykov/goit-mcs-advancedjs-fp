@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const filtersPerPage = 12;
   const exercisesPerPage = window.innerWidth <= 768 ? 8 : 10;
-  const visiblePagesPagination = 10;
+  const visiblePagesPagination = 5;
   let currentPage = 1;
   let selectedCategory = 'Muscles';
   let selectedPart = '';
@@ -46,7 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const removePagination = () => {
-    elements.paginationContainer.classList.add('visually-hidden');
+    elements.paginationContainer.classList.add(
+      'exercises__search-form--hidden'
+    );
     elements.paginationContainer.innerHTML = '';
   };
 
@@ -82,7 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const initializePagination = (totalPages, perPage) => {
     if (totalPages > 1) {
-      elements.paginationContainer.classList.remove('visually-hidden');
+      elements.paginationContainer.classList.remove(
+        'exercises__search-form--hidden'
+      );
 
       paginationInstance = new Pagination(elements.paginationContainer, {
         totalItems: totalPages * perPage,
@@ -125,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const fetchAndDrawFilters = async (category = 'Muscles') => {
     remove_filters();
     removePagination();
-    elements.loader.classList.remove('visually-hidden');
+    elements.loader.classList.remove('exercises__search-form--hidden');
 
     try {
       const { results, totalPages } = await getFilters({
@@ -136,23 +140,27 @@ document.addEventListener('DOMContentLoaded', () => {
         },
       });
 
-      elements.searchForm.classList.add('visually-hidden');
-      elements.breadcrumbsTitleDivider.classList.add('visually-hidden');
-      elements.breadcrumbsSubtitle.classList.add('visually-hidden');
+      elements.searchForm.classList.add('exercises__search-form--hidden');
+      elements.breadcrumbsTitleDivider.classList.add(
+        'exercises__search-form--hidden'
+      );
+      elements.breadcrumbsSubtitle.classList.add(
+        'exercises__search-form--hidden'
+      );
 
       draw_filters(results);
       initializePagination(totalPages, filtersPerPage);
     } catch (error) {
       console.error('Error fetching filters:', error);
     } finally {
-      elements.loader.classList.add('visually-hidden');
+      elements.loader.classList.add('exercises__search-form--hidden');
     }
   };
 
   const fetchAndDrawExercises = async params => {
     remove_exercies();
     removePagination();
-    elements.loader.classList.remove('visually-hidden');
+    elements.loader.classList.remove('exercises__search-form--hidden');
 
     try {
       const { results, totalPages } = await getExercises({ params });
@@ -161,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       console.error('Error fetching exercises:', error);
     } finally {
-      elements.loader.classList.add('visually-hidden');
+      elements.loader.classList.add('exercises__search-form--hidden');
     }
   };
 
@@ -185,9 +193,13 @@ document.addEventListener('DOMContentLoaded', () => {
     elements.breadcrumbsSubtitle.textContent =
       capitalizeFirstLetter(selectedPart);
 
-    elements.breadcrumbsSubtitle.classList.remove('visually-hidden');
-    elements.searchForm.classList.remove('visually-hidden');
-    elements.breadcrumbsTitleDivider.classList.remove('visually-hidden');
+    elements.breadcrumbsSubtitle.classList.remove(
+      'exercises__search-form--hidden'
+    );
+    elements.searchForm.classList.remove('exercises__search-form--hidden');
+    elements.breadcrumbsTitleDivider.classList.remove(
+      'exercises__search-form--hidden'
+    );
 
     currentPage = 1;
 
@@ -201,9 +213,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const toggleSearchClearButton = () => {
     if (elements.searchInput.value.trim() !== '') {
-      elements.searchBtnClear.classList.remove('visually-hidden');
+      elements.searchBtnClear.classList.remove(
+        'exercises__search-form--hidden'
+      );
     } else {
-      elements.searchBtnClear.classList.add('visually-hidden');
+      elements.searchBtnClear.classList.add('exercises__search-form--hidden');
     }
   };
 
@@ -211,9 +225,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchValue = elements.searchInput.value;
 
     if (searchValue.trim() !== '') {
-      elements.searchBtnClear.classList.remove('visually-hidden');
+      elements.searchBtnClear.classList.remove(
+        'exercises__search-form--hidden'
+      );
     } else {
-      elements.searchBtnClear.classList.add('visually-hidden');
+      elements.searchBtnClear.classList.add('exercises__search-form--hidden');
     }
 
     currentPage = 1;
@@ -229,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const onClearSearchClick = () => {
     elements.searchInput.value = '';
     elements.searchInput.focus();
-    elements.searchBtnClear.classList.add('visually-hidden');
+    elements.searchBtnClear.classList.add('exercises__search-form--hidden');
 
     currentPage = 1;
 

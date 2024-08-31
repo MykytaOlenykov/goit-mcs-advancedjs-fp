@@ -21,25 +21,25 @@
 }
 
 .exercises__name {
-  width: 335px;
+  width: 100%;
   border-radius: 15px;
   padding: 16px;
+  overflow: hidden;
 
   background-color: var(--white);
 }
 
 @media only screen and (min-width: 768px) {
-    .exercises__name {
-        width: 344px;
-    }
+  .exercises__name {
+    width: 344px;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
-    .exercises__name {
-        width: 442px;
-    }
+  .exercises__name {
+    width: 442px;
+  }
 }
-
 
 .exercises__name-wraper-1 {
   display: flex;
@@ -47,6 +47,22 @@
   align-items: center;
   padding-bottom: 25px;
   position: relative;
+}
+
+.exercises__name-rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  color: var(--black);
+}
+
+.exercises__name-rating svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--orange);
 }
 
 .exercises__name-tag {
@@ -58,21 +74,23 @@
 }
 
 .exercises__name-btn {
-  margin-left: auto;
-  margin-right: 24px;
   border: none;
   background-color: transparent;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 0;
+  margin-left: auto;
+}
+
+.exercises__name-btn svg {
+  stroke: currentColor;
 }
 
 .exercises__remove-btn {
   background-color: transparent;
   border: none;
   padding: 0;
-}
-
-.exercises__name-icon {
-  position: absolute;
-  right: 0;
 }
 
 .exercises__name-h3 {
@@ -88,11 +106,10 @@
 }
 
 @media only screen and (min-width: 768px) {
-    .exercises__name-h3 {
-        font-size: 24px;
-        line-height: 133%;
-    }
-
+  .exercises__name-h3 {
+    font-size: 24px;
+    line-height: 133%;
+  }
 }
 
 .exercises__name-h3::first-letter {
