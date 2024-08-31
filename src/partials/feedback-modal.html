@@ -1,1 +1,61 @@
-<p>feedback-modal</p>
+<div id="myModal" class="modal is-hidden" data-modal>
+    <div class="modal-content">
+        <span class="modal-close-btn" data-modal-close>
+            <svg width="20" height="20" style="stroke: #F4F4F4">
+                <use href="./assets/icons/icons-sprite.svg#close"></use>
+            </svg></span>
+        <form class="modal-form" novalidate>
+            <h2 class="rating-title">Rating</h2>
+            <div class="modal-rating-container">
+                <div class="modal-rating">0.0</div>
+                <div class="modal-stars">
+                    <ul>
+                        <li class="modal-star" data-value="1"><svg width="20" height="20"
+                                style="fill: rgba(244, 244, 244, 0.2);">
+                                <use href="./assets/icons/icons-sprite.svg#star"></use>
+                            </svg>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="modal-star" data-value="2"><svg width="20" height="20"
+                                style="fill: rgba(244, 244, 244, 0.20);">
+                                <use href="./assets/icons/icons-sprite.svg#star"></use>
+                            </svg>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="modal-star" data-value="3"><svg width="20" height="20"
+                                style="fill: rgba(244, 244, 244, 0.20);">
+                                <use href="./assets/icons/icons-sprite.svg#star"></use>
+                            </svg>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="modal-star" data-value="4"><svg width="20" height="20"
+                                style="fill: rgba(244, 244, 244, 0.20);">
+                                <use href="./assets/icons/icons-sprite.svg#star"></use>
+                            </svg>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="modal-star" data-value="5"><svg width="20" height="20"
+                                style="fill: rgba(244, 244, 244, 0.20);">
+                                <use href="./assets/icons/icons-sprite.svg#star"></use>
+                            </svg>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p class="error-message-stars" id="stars-error"></p>
+            <div class="modal-form-group">
+                <input type="email" name="email" placeholder="Email">
+                <p class="error-message" id="email-error"></p>
+            </div>
+            <div class="modal-form-group">
+                <textarea name="comment" placeholder="Your comment"></textarea>
+                <p class="error-message" id="comment-error"></p>
+            </div>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</div>
