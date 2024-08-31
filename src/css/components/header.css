@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 28px;
+  padding-top: 20px;
 }
 
 .header__nav--logo {
@@ -20,10 +20,10 @@
   justify-content: center;
   flex-direction: row;
   align-items: center;
-  gap: 20px;
+  gap: 6px;
   background: var(--black);
   border-radius: 30px;
-  padding: 6px 12px;
+  padding: 8px 12px;
   width: 233px;
   height: 52px;
 }
@@ -113,18 +113,19 @@
   position: fixed;
   top: 0;
   right: 0;
+  z-index: 500;
   height: 100vh;
   background-color: var(--black);
   padding: 20px 27px;
 }
 
-.header__menu-overlay.is-hidden {
+.header__menu-overlay.menu-is-hidden {
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
 }
 
-.header__menu-overlay:not(.is-hidden) {
+.header__menu-overlay:not(.menu-is-hidden) {
   opacity: 1;
 }
 
@@ -140,8 +141,8 @@
 }
 
 .header__close--btn--svg {
-  width: 20px;
-  height: 20px;
+  width: 32px;
+  height: 32px;
   stroke: white;
 }
 
@@ -154,6 +155,9 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  gap: 16px;
+  font-size: 14px;
+  line-height: 129%;
 }
 
 .header__mobile--socials {
@@ -173,12 +177,12 @@
   cursor: pointer;
   height: 44px;
   width: 44px;
+  transition: background-color 250ms linear, color 250ms linear;
 }
 
 .header__mobile--socials--link:hover {
   background-color: var(--white);
-  color: #242424;
-  transition: background-color 250ms linear;
+  color: var(--black);
 }
 
 .header__mobile--socials--svg {
@@ -187,34 +191,6 @@
   fill: currentColor;
   opacity: 1;
 }
-
-/*.header--mobile .header__socials svg {
-  fill: #f4f4f4;
-  opacity: 0.8;
-  width: 28px;
-  height: 28px;
-}*/
-
-/*.header--mobile .header__socials a {
-  border: 1px solid rgba(244, 244, 244, 0.1);
-}
-
-.header--mobile .header__socials a:hover {
-  background-color: rgba(244, 244, 244, 0.9);
-}
-
-.header--mobile .header__socials svg:hover {
-  fill: #242424;
-}
-
-.header__menu-overlay.is-hidden .header--mobile {
-  transform: translateX(100%);
-}
-
-.header__menu-overlay:not(.is-hidden) .header--mobile {
-  transform: translateX(0);
-}
-  */
 
 @media only screen and (max-width: 767px) {
   .header__menu-overlay,
@@ -230,10 +206,10 @@
   }
 }
 
-@media only screen and (min-width: 1280px) {
-  /*.header {
-    padding: 20px 64px;
-  }*/
+@media only screen and (min-width: 768px) {
+  .header {
+    padding-top: 20px;
+  }
 
   .header__menu-overlay,
   .header__burger-btn {
@@ -253,7 +229,7 @@
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1280px) {
   .header__menu-overlay,
   .header__burger-btn {
     display: none;
@@ -269,5 +245,9 @@
 
   .header__nav ul {
     flex-direction: row;
+  }
+
+  .header__nav--links {
+    width: 265px;
   }
 }

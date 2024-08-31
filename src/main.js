@@ -1,3 +1,4 @@
+import './js/components/header';
 import './js/components/burger-menu';
 import './js/components/feedback-modal';
 import './js/components/exercises-section';
