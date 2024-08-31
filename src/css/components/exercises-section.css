@@ -311,9 +311,11 @@
 }
 
 .exercises__cards-empty {
+  max-width: 550px;
+  margin: 24px auto;
   text-align: center;
-  font-size: 24px;
-  margin: 24px 0;
+  font-size: 18px;
+  line-height: 24px;
 }
 
 .exercises__breadcrumbs {
@@ -384,8 +386,4 @@
   .exercises__controls {
     margin-bottom: 0;
   }
-}
-
-.hidden {
-  display: none;
 }
