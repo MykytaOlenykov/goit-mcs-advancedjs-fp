@@ -184,7 +184,7 @@ function renderExerciseActionBar({ exerciseId }) {
           >
             Add to favorites
             <svg>
-              <use href="./assets/icons/icons-sprite.svg#heart"></use>
+              <use href="${svgSprite}#heart"></use>
             </svg>
           </button>
           <button
