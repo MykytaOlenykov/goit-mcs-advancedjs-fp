@@ -117,12 +117,16 @@
   height: 100vh;
   background-color: var(--black);
   padding: 20px 27px;
+  transform: translateX(0);
+  pointer-events: auto;
+  visibility: visible;
+  transition: all 250ms linear;
 }
 
 .header__menu-overlay.menu-is-hidden {
-  opacity: 0;
   pointer-events: none;
   visibility: hidden;
+  transform: translateX(100%);
 }
 
 .header__menu-overlay:not(.menu-is-hidden) {
