@@ -1,1 +1,86 @@
-<p>exercise-modal</p>
+<div class="exercise-modal-backdrop">
+  <div class="exercise-modal">
+    <button
+      class="exercise-modal__close-btn"
+      type="button"
+      aria-label="Close modal"
+    >
+      <svg>
+        <use href="./assets/icons/icons-sprite.svg#close"></use>
+      </svg>
+    </button>
+
+    <div class="exercise-modal__thumb">
+      <img class="exercise-modal__img" src="${gifUrl}" alt="${name}" />
+    </div>
+
+    <div>
+      <h3 class="exercise-modal__title">${name}</h3>
+
+      <div class="exercise-modal__rating">
+        <p class="exercise-modal__rating-value">${rating}</p>
+        <svg
+          class="exercise-modal__rating-star exercise-modal__rating-star--accent"
+        >
+          <use href="./assets/icons/icons-sprite.svg#star"></use>
+        </svg>
+        <svg class="exercise-modal__rating-star">
+          <use href="./assets/icons/icons-sprite.svg#star"></use>
+        </svg>
+        <svg class="exercise-modal__rating-star">
+          <use href="./assets/icons/icons-sprite.svg#star"></use>
+        </svg>
+        <svg class="exercise-modal__rating-star">
+          <use href="./assets/icons/icons-sprite.svg#star"></use>
+        </svg>
+        <svg class="exercise-modal__rating-star">
+          <use href="./assets/icons/icons-sprite.svg#star"></use>
+        </svg>
+      </div>
+
+      <ul class="exercise-modal__info">
+        <li>
+          <h4 class="exercise-modal__info-title">Target</h4>
+          <p class="exercise-modal__info-desc">${target}</p>
+        </li>
+        <li>
+          <h4 class="exercise-modal__info-title">Body Part</h4>
+          <p class="exercise-modal__info-desc">${bodyPart}</p>
+        </li>
+        <li>
+          <h4 class="exercise-modal__info-title">Equipment</h4>
+          <p class="exercise-modal__info-desc">${equipment}</p>
+        </li>
+        <li>
+          <h4 class="exercise-modal__info-title">Popular</h4>
+          <p class="exercise-modal__info-desc">${popularity}</p>
+        </li>
+        <li>
+          <h4 class="exercise-modal__info-title">Burned Calories</h4>
+          <p class="exercise-modal__info-desc">${burnedCalories}</p>
+        </li>
+      </ul>
+
+      <p class="exercise-modal__desc">${description}</p>
+
+      <div class="exercise-modal__action-bar">
+        <button
+          class="exercise-modal__btn exercise-modal__btn--primary"
+          type="button"
+        >
+          Add to favorites
+          <svg>
+            <use href="./assets/icons/icons-sprite.svg#heart"></use>
+          </svg>
+        </button>
+        <button
+          class="exercise-modal__btn exercise-modal__btn--secondary"
+          type="button"
+        >
+          Give a rating
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+;
