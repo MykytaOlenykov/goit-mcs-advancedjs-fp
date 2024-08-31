@@ -224,10 +224,13 @@
 
 @media screen and (min-width: 768px) {
   .exercise-modal {
-    display: flex;
-    gap: 32px;
     padding: 32px;
     min-width: 704px;
+  }
+
+  .exercise-modal__content {
+    display: flex;
+    gap: 32px;
   }
 
   .exercise-modal__close-btn {
@@ -240,6 +243,7 @@
 
   .exercise-modal__thumb {
     flex-shrink: 0;
+    margin-bottom: 0;
     width: 270px;
     height: 259px;
   }
