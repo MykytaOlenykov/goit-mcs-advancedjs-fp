@@ -126,9 +126,11 @@ function renderExerciseRating({ rating }) {
         <div class="exercise-modal__rating">
           <p class="exercise-modal__rating-value">${rating}</p>
          
-          ${[1, 2, 3, 4, 5].map(value =>
-            renderRatingStar({ isActive: value <= Math.round(rating) })
-          )}
+          ${[1, 2, 3, 4, 5]
+            .map(value =>
+              renderRatingStar({ isActive: value <= Math.round(rating) })
+            )
+            .join('')}
         </div>
     `;
 }
@@ -154,18 +156,20 @@ const exerciseInfoLabels = [
 function renderExerciseInfo(props) {
   return `
         <ul class="exercise-modal__info">
-          ${exerciseInfoLabels.map(([infoKey, infoLabel]) => {
-            const infoValue = props[infoKey];
+          ${exerciseInfoLabels
+            .map(([infoKey, infoLabel]) => {
+              const infoValue = props[infoKey];
 
-            return infoValue
-              ? `
+              return infoValue
+                ? `
                 <li>
                     <h4 class="exercise-modal__info-title">${infoLabel}</h4>
                     <p class="exercise-modal__info-desc">${infoValue}</p>
                 </li>
             `
-              : ``;
-          })}
+                : ``;
+            })
+            .join('')}
         </ul>
     `;
 }
