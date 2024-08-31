@@ -272,7 +272,10 @@
   .exercise-modal__action-bar {
     flex-direction: row;
     justify-content: space-between;
-    gap: 0;
+  }
+
+  .exercise-modal__action-bar--wrap {
+    flex-wrap: wrap;
   }
 
   .exercise-modal__btn {
@@ -281,11 +284,16 @@
   }
 
   .exercise-modal__btn--primary {
-    flex-basis: 194px;
+    flex-grow: 1;
   }
 
   .exercise-modal__btn--secondary {
-    flex-basis: 137px;
+    flex-shrink: 0;
+    width: 137px;
+  }
+
+  .exercise-modal__btn--large {
+    width: 100%;
   }
 
   .exercise-modal__btn svg {
