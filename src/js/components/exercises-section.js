@@ -37,6 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
     'Body parts': 'bodypart',
   };
 
+  const paginationIconsMap = {
+    first: 'double-arrow-prev',
+    prev: 'arrow-prev',
+    next: 'arrow-next',
+    last: 'double-arrow-next',
+  };
+
   const removePagination = () => {
     elements.paginationContainer.classList.add('hidden');
     elements.paginationContainer.innerHTML = '';
@@ -62,6 +69,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  const getMovePageBtn = (type, isDisabled = false) => {
+    return (
+      `<a href="#" class="tui-page-btn tui-${type} ${isDisabled ? 'tui-is-disabled' : ''}">
+        <svg width="20" height="20">
+          <use href="./assets/icons/icons-sprite.svg#${paginationIconsMap[type]}"></use>
+        </svg>
+      </a>`
+    );
+  };
+
   const initializePagination = (totalPages, perPage) => {
     if (totalPages > 1) {
       elements.paginationContainer.classList.remove('hidden');
@@ -71,6 +88,18 @@ document.addEventListener('DOMContentLoaded', () => {
         itemsPerPage: perPage,
         visiblePages: visiblePagesPagination,
         page: currentPage,
+        template: {
+          moveButton: (data) => {
+            const { type } = data;
+
+            return getMovePageBtn(type);
+          },
+          disabledMoveButton: (data) => {
+            const { type } = data;
+
+            return getMovePageBtn(type, true);
+          },
+        },
       });
 
       paginationInstance.on('afterMove', event => {
