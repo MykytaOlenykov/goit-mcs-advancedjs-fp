@@ -6,6 +6,9 @@
   background-color: #242424;
   padding-top: 40px;
 }
+.footer__container {
+  width: 100%;
+}
 .logo-socials__wrapper {
   margin-bottom: 40px;
 }
@@ -62,12 +65,13 @@
   align-items: flex-start;
   gap: 20px;
   padding-bottom: 120px;
+  width: 100%;
 }
 .subscription-form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 20px;
+  width: 100%;
 }
 .form-title__wrapper p {
   color: #f4f4f4;
@@ -79,9 +83,10 @@
 }
 .subscription-form input {
   display: flex;
-  padding: 12px 175px 12px 14px;
+  padding: 12px 14px;
   align-items: center;
   gap: 10px;
+  width: 100%;
 
   border-radius: 30px;
   border: 1px solid #f4f4f4;
@@ -95,11 +100,13 @@
 }
 .subscription-form button {
   display: flex;
-  padding: 12px 150px;
+  padding: 12px;
   justify-content: center;
   align-items: center;
   gap: 8px;
+  width: 100%;
 
+  border: none;
   border-radius: 30px;
   background-color: #f4f4f4;
 
@@ -128,7 +135,12 @@
   padding-bottom: 10px;
 }
 .year {
-  padding-left: 79px;
+  margin-left: auto;
+}
+.links {
+  display: flex;
+  gap: 8;
+  align-items: center;
 }
 
 @media only screen and (min-width: 768px) {
@@ -153,22 +165,27 @@
   }
   .subscription-block__wrapper {
     padding-bottom: 0px;
+    flex-shrink: 0;
   }
   .form-title__wrapper p {
     font-size: 18px;
+  }
+  .subscription-form {
+    max-width: 352px;
+    width: 100%;
   }
   .subscription-form input {
     font-size: 16px;
   }
   .subscription-form button {
     font-size: 16px;
-    padding: 12px 45%;
+    padding: 12px;
   }
   .links {
     margin-left: 78px;
   }
-  .year {
-    margin-left: 100px;
+  .policy-block__wrapper {
+    gap: 0;
   }
 }
 
@@ -183,11 +200,20 @@
   }
   .logo-socials__wrapper {
     margin-right: 158px;
+    flex-grow: 1;
   }
   .footer__social-icon {
     width: 28px;
     height: 28px;
     flex-shrink: 0;
+  }
+
+  .year {
+    margin-left: 0;
+  }
+
+  .subscription-block__wrapper {
+    width: 352px;
   }
 
   .policy-block__wrapper {
@@ -205,7 +231,10 @@
     letter-spacing: -0.28px;
   }
   .links {
-    margin-left: 110px;
-    margin-right: 330px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-left: 122px;
+    margin-right: 498px;
   }
 }
