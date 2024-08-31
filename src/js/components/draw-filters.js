@@ -51,7 +51,12 @@ export function draw_exercies(exercises, isFavouritePage = false) {
             <use href="${svgSprite}#trash"></use>
           </svg>
       </button>`
-      : `<span class="exercises__name-rating">${exercise.rating}</span>`;
+      : `<span class="exercises__name-rating">
+          ${exercise.rating}
+           <svg>
+            <use href="${svgSprite}#star"></use>
+            </svg>
+      </span>`;
 
   const markup_exercies = exercises
     .map(
@@ -62,13 +67,11 @@ export function draw_exercies(exercises, isFavouritePage = false) {
         ${getChangableFragment(exercise)}
         <button class="exercises__name-btn" type="button" data-modal-open="${
           exercise._id
-        }">Start</button>
-
-          <svg class="exercises__name-icon" width="16" height="16" style="stroke: black;">
+        }">Start
+          <svg class="exercises__name-icon" width="16" height="16">
             <use href="${svgSprite}#arrow"></use>
           </svg>
-
-
+        </button>
         </div>
 
         <div class="exercises__name-h3-wraper">
