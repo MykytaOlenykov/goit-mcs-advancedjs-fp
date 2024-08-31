@@ -8,7 +8,7 @@
 .header__nav--logo {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 .header__nav--logo-svg {
   width: 132px;
@@ -94,11 +94,15 @@
   display: flex;
   border: none;
   background-color: transparent;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 40px;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.header__burger-btn-svg {
+  width: 32px;
   height: 32px;
+  stroke: var(--black);
 }
 
 /* header-menu-overlay */
@@ -116,6 +120,8 @@
 
 .header__menu-overlay.is-hidden {
   opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
 
 .header__menu-overlay:not(.is-hidden) {
@@ -225,9 +231,9 @@
 }
 
 @media only screen and (min-width: 1280px) {
-  .header {
+  /*.header {
     padding: 20px 64px;
-  }
+  }*/
 
   .header__menu-overlay,
   .header__burger-btn {
