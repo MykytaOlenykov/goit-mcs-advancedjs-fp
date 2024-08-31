@@ -233,24 +233,7 @@
   }
 }
 
-@media only screen and (min-width: 1280px) {
-  .header__menu-overlay,
-  .header__burger-btn {
-    display: none;
-  }
-
-  .header--desktop .header__nav:not(.header__nav--logo) {
-    display: block;
-  }
-
-  .header--desktop .header__socials {
-    display: flex;
-  }
-
-  .header__nav ul {
-    flex-direction: row;
-  }
-
+@media only screen and (min-width: 1440px) {
   .header__nav--links {
     width: 265px;
   }
