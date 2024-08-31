@@ -1,4 +1,5 @@
 import { favoritesExercisesStore } from '../store/exercises';
+import svgSprite from '../../assets/icons/icons-sprite.svg';
 
 const cardList = document.querySelector('.exercises__cards');
 const cardListEmpty = document.querySelector('.exercises__cards-empty');
@@ -47,7 +48,7 @@ export function draw_exercies(exercises, isFavouritePage = false) {
     isFavouritePage
       ? `<button class="exercises__remove-btn" type="button" data-remove-id="${exercise._id}">
           <svg width="18" height="18" style="stroke: black">
-            <use href="./assets/icons/icons-sprite.svg#trash"></use>
+            <use href="${svgSprite}#trash"></use>
           </svg>
       </button>`
       : `<span class="exercises__name-rating">${exercise.rating}</span>`;
@@ -64,7 +65,7 @@ export function draw_exercies(exercises, isFavouritePage = false) {
         }">Start</button>
 
           <svg class="exercises__name-icon" width="16" height="16" style="stroke: black;">
-            <use href="./assets/icons/icons-sprite.svg#arrow"></use>
+            <use href="${svgSprite}#arrow"></use>
           </svg>
 
 
@@ -74,7 +75,7 @@ export function draw_exercies(exercises, isFavouritePage = false) {
         <h3 class="exercises__name-h3">${exercise.name}</h3>
         <div class="exersize__h3-icon-wraper">
           <svg class="exersize__h3-icon" width="18" height="18">
-            <use href="../assets/icons/icons-sprite.svg#runner"></use>
+            <use href="${svgSprite}#runner"></use>
           </svg>
         </div>
         </div>
