@@ -1,18 +1,88 @@
 import { getExerciseById } from '../services/api';
 
-const exerciseModalContentRef = document.querySelector(
+const exercisesListRef = document.querySelector('.js-exercises-cards');
+const exerciseModalBackdropRef = document.querySelector(
+  '.exercise-modal-backdrop'
+);
+const exerciseModalContentRef = exerciseModalBackdropRef.querySelector(
   '.exercise-modal__content'
 );
+const exerciseModalCloseBtnRef = exerciseModalBackdropRef.querySelector(
+  '.exercise-modal__close-btn'
+);
 
-(async () => {
+const EXERCISE_MODAL_BACKDROP_HIDDEN_CLASS =
+  'exercise-modal-backdrop--is-hidden';
+
+exercisesListRef.addEventListener('click', e => {
+  const { target } = e;
+
+  let exerciseId = target.dataset.modalOpen;
+
+  if (exerciseId) {
+    getExercise({ exerciseId });
+    return;
+  }
+
+  const buttonRef = target.closest('button[data-modal-open]');
+  exerciseId = buttonRef?.dataset?.modalOpen;
+
+  if (exerciseId) {
+    getExercise({ exerciseId });
+    return;
+  }
+});
+
+async function getExercise({ exerciseId }) {
   try {
     const data = await getExerciseById({
-      exerciseId: '64f389465ae26083f39b17a2',
+      exerciseId,
     });
-    const markup = renderExerciseCard(data);
-    exerciseModalContentRef.innerHTML = markup;
+    exerciseModalContentRef.innerHTML = renderExerciseCard(data);
+    mountExerciseCard();
   } catch (error) {}
-})();
+}
+
+function mountExerciseCard() {
+  exerciseModalCloseBtnRef.addEventListener('click', closeExerciseModal);
+  exerciseModalBackdropRef.addEventListener(
+    'click',
+    closeExerciseModalOnBackdrop
+  );
+  document.addEventListener('keydown', closeExerciseModalOnEscape);
+  exerciseModalBackdropRef.classList.remove(
+    EXERCISE_MODAL_BACKDROP_HIDDEN_CLASS
+  );
+}
+
+function unmountExerciseCard() {
+  exerciseModalCloseBtnRef.removeEventListener('click', closeExerciseModal);
+  exerciseModalBackdropRef.removeEventListener(
+    'click',
+    closeExerciseModalOnBackdrop
+  );
+  document.removeEventListener('keydown', closeExerciseModalOnEscape);
+}
+
+function closeExerciseModal() {
+  exerciseModalBackdropRef.classList.add(EXERCISE_MODAL_BACKDROP_HIDDEN_CLASS);
+  setTimeout(() => {
+    exerciseModalContentRef.innerHTML = '';
+    unmountExerciseCard();
+  }, 500);
+}
+
+function closeExerciseModalOnEscape(e) {
+  if (e.code === 'Escape') {
+    closeExerciseModal();
+  }
+}
+
+function closeExerciseModalOnBackdrop(e) {
+  if (e.target === exerciseModalBackdropRef) {
+    closeExerciseModal();
+  }
+}
 
 function renderExerciseCard({
   _id,
