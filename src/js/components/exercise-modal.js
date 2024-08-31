@@ -1,5 +1,6 @@
 import { getExerciseById } from '../services/api';
 import { favoritesExercisesStore } from '../store/exercises';
+import { renderFavouriteExerciseCards } from './draw-filters';
 import { openFeedbackModal } from './feedback-modal';
 import svgSprite from '../../assets/icons/icons-sprite.svg';
 
@@ -114,7 +115,7 @@ function renderExerciseCard({
         <h3 class="exercise-modal__title">${name}</h3>
 
         ${renderExerciseRating({ rating })}
-  
+
         ${renderExerciseInfo({
           bodyPart,
           equipment,
@@ -136,7 +137,7 @@ function renderExerciseRating({ rating }) {
   return `
         <div class="exercise-modal__rating">
           <p class="exercise-modal__rating-value">${rating}</p>
-         
+
           ${[1, 2, 3, 4, 5]
             .map(value =>
               renderRatingStar({ isActive: value <= Math.round(rating) })
@@ -283,11 +284,13 @@ function getActionButtonsRefs() {
 function addFavoriteExercise() {
   favoritesExercisesStore.addFavoriteExercise(currentExercise);
   refreshActionBar();
+  renderFavouriteExerciseCards();
 }
 
 function removeFavoriteExercise() {
   favoritesExercisesStore.removeFavoriteExercise(currentExercise?._id);
   refreshActionBar();
+  renderFavouriteExerciseCards();
 }
 
 function handleOpenFeedBackModal() {

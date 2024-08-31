@@ -64,6 +64,12 @@
   background-color: transparent;
 }
 
+.exercises__remove-btn {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
 .exercises__name-icon {
   position: absolute;
   right: 0;

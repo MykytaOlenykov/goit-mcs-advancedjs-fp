@@ -1,5 +1,20 @@
-<p>favorites-section</p>
-<div class="container favorites-section">
-  <load src="/partials/sidebar-info.html" />
-  <load src="/partials/exercises-list.html" />
+<div class="favorites-section">
+  <div class="container">
+    <h2 class="section__title">
+      Favorites
+    </h2>
+
+    <div class="exercises__cards-wraper">
+      <div class="exercises__cards-container">
+        <load src="/partials/loader.html" />
+        <div class="exercises__cards-empty visually-hidden"></div>
+
+        <ul class="exercises__cards js-exercises-cards"></ul>
+      </div>
+
+      <load src="/partials/exercises-list.html" />
+
+      <load src="/partials/sidebar-info.html" />
+    </div>
+  </div>
 </div>
