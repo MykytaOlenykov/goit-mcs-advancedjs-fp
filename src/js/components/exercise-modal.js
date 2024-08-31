@@ -1,5 +1,6 @@
 import { getExerciseById } from '../services/api';
 import { favoritesExercisesStore } from '../store/exercises';
+import { openFeedbackModal } from './feedback-modal';
 import svgSprite from '../../assets/icons/icons-sprite.svg';
 
 const exercisesListRef = document.querySelector('.js-exercises-cards');
@@ -242,7 +243,7 @@ function mountActionBar() {
 
   favoriteAddButtonRef?.addEventListener('click', addFavoriteExercise);
   favoriteRemoveButtonRef?.addEventListener('click', removeFavoriteExercise);
-  //   ratingButtonRef?.addEventListener('click');
+  ratingButtonRef?.addEventListener('click', handleOpenFeedBackModal);
 }
 
 function unmountActionBar() {
@@ -251,7 +252,7 @@ function unmountActionBar() {
 
   favoriteAddButtonRef?.removeEventListener('click', addFavoriteExercise);
   favoriteRemoveButtonRef?.removeEventListener('click', removeFavoriteExercise);
-  //   ratingButtonRef?.removeEventListener('click');
+  ratingButtonRef?.removeEventListener('click', handleOpenFeedBackModal);
 }
 
 function renderActionButton({ type = '', className = '', children = '' }) {
@@ -287,4 +288,8 @@ function addFavoriteExercise() {
 function removeFavoriteExercise() {
   favoritesExercisesStore.removeFavoriteExercise(currentExercise?._id);
   refreshActionBar();
+}
+
+function handleOpenFeedBackModal() {
+  openFeedbackModal({ exerciseId: currentExercise._id });
 }
