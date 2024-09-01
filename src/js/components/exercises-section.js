@@ -1,4 +1,3 @@
-import Pagination from 'tui-pagination';
 import { getFilters, getExercises } from '../services/api';
 import {
   draw_exercies,
@@ -6,7 +5,8 @@ import {
   remove_filters,
   remove_exercies,
 } from './draw-filters';
-import svgSprite from '../../assets/icons/icons-sprite.svg';
+import { initializePagination, removePagination } from './pagination';
+import { capitalizeFirstLetter, debounce } from './helpers';
 
 document.addEventListener('DOMContentLoaded', () => {
   const elements = {
@@ -24,13 +24,18 @@ document.addEventListener('DOMContentLoaded', () => {
     loader: document.querySelector('#loader'),
   };
 
-  const filtersPerPage = 12;
-  const exercisesPerPage = window.innerWidth <= 768 ? 8 : 10;
-  const visiblePagesPagination = 5;
+  let filtersPerPage = {
+    small: 9,
+    large: 12,
+  }
+  let exercisesPerPage = {
+    small: 8,
+    large: 10,
+  }
+  let currentBreakpoint = window.innerWidth <= 768 ? 'small' : 'large';
   let currentPage = 1;
   let selectedCategory = 'Muscles';
   let selectedPart = '';
-  let paginationInstance;
 
   const categoriesToFiltersMap = {
     Muscles: 'muscles',
@@ -38,80 +43,18 @@ document.addEventListener('DOMContentLoaded', () => {
     'Body parts': 'bodypart',
   };
 
-  const paginationIconsMap = {
-    first: 'double-arrow-prev',
-    prev: 'arrow-prev',
-    next: 'arrow-next',
-    last: 'double-arrow-next',
-  };
-
-  const removePagination = () => {
-    elements.paginationContainer.classList.add('visually-hidden');
-    elements.paginationContainer.innerHTML = '';
-  };
-
-  const capitalizeFirstLetter = string =>
-    string.charAt(0).toUpperCase() + string.slice(1);
-
-  const debounce = (func, delay) => {
-    let timeout;
-
-    return function (...args) {
-      const context = this;
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(context, args), delay);
-    };
-  };
-
-  const getMovePageBtn = (type, isDisabled = false) => {
-    return `<a href="#" class="tui-page-btn tui-${type} ${
-      isDisabled ? 'tui-is-disabled' : ''
-    }" aria-label="page-${type}">
-        <svg width="20" height="20">
-          <use href="${svgSprite}#${paginationIconsMap[type]}"></use>
-        </svg>
-      </a>`;
-  };
-
-  const initializePagination = (totalPages, perPage) => {
-    if (totalPages > 1) {
-      elements.paginationContainer.classList.remove('visually-hidden');
-
-      paginationInstance = new Pagination(elements.paginationContainer, {
-        totalItems: totalPages * perPage,
-        itemsPerPage: perPage,
-        visiblePages: visiblePagesPagination,
+  const onAfterMove = event => {
+    currentPage = event.page;
+    if (selectedPart) {
+      fetchAndDrawExercises({
+        [categoriesToFiltersMap[selectedCategory]]: selectedPart,
         page: currentPage,
-        template: {
-          moveButton: data => {
-            const { type } = data;
-
-            return getMovePageBtn(type);
-          },
-          disabledMoveButton: data => {
-            const { type } = data;
-
-            return getMovePageBtn(type, true);
-          },
-        },
-      });
-
-      paginationInstance.on('afterMove', event => {
-        currentPage = event.page;
-        if (selectedPart) {
-          fetchAndDrawExercises({
-            [categoriesToFiltersMap[selectedCategory]]: selectedPart,
-            page: currentPage,
-            limit: exercisesPerPage,
-          });
-        } else {
-          fetchAndDrawFilters(selectedCategory);
-        }
+        limit: exercisesPerPage[currentBreakpoint],
       });
     } else {
-      removePagination();
+      fetchAndDrawFilters(selectedCategory);
     }
-  };
+  }
 
   const fetchAndDrawFilters = async (category = 'Muscles') => {
     remove_filters();
@@ -123,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         params: {
           filter: category,
           page: currentPage,
-          limit: filtersPerPage,
+          limit: filtersPerPage[currentBreakpoint],
         },
       });
 
@@ -132,7 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
       elements.breadcrumbsSubtitle.classList.add('visually-hidden');
 
       draw_filters(results);
-      initializePagination(totalPages, filtersPerPage);
+      initializePagination(
+        totalPages,
+        filtersPerPage[currentBreakpoint],
+        currentPage,
+        onAfterMove
+      );
     } catch (error) {
       console.error('Error fetching filters:', error);
     } finally {
@@ -148,7 +96,12 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const { results, totalPages } = await getExercises({ params });
       draw_exercies(results);
-      initializePagination(totalPages, exercisesPerPage);
+      initializePagination(
+        totalPages,
+        exercisesPerPage[currentBreakpoint],
+        currentPage,
+        onAfterMove
+      );
     } catch (error) {
       console.error('Error fetching exercises:', error);
     } finally {
@@ -185,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     await fetchAndDrawExercises({
       [categoriesToFiltersMap[selectedCategory]]: selectedPart,
       page: currentPage,
-      limit: exercisesPerPage,
+      limit: exercisesPerPage[currentBreakpoint],
     });
   };
 
@@ -212,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
       [categoriesToFiltersMap[selectedCategory]]: selectedPart,
       keyword: searchValue,
       page: currentPage,
-      limit: exercisesPerPage,
+      limit: exercisesPerPage[currentBreakpoint],
     });
   }, 300);
 
@@ -227,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
       [categoriesToFiltersMap[selectedCategory]]: selectedPart,
       keyword: '',
       page: currentPage,
-      limit: exercisesPerPage,
+      limit: exercisesPerPage[currentBreakpoint],
     });
   };
 
@@ -239,6 +192,24 @@ document.addEventListener('DOMContentLoaded', () => {
     await fetchAndDrawFilters(selectedCategory);
   };
 
+  const onResize = debounce(() => {
+    const newBreakpoint = window.innerWidth <= 768 ? 'small' : 'large';
+
+    if (newBreakpoint === currentBreakpoint) return;
+    currentBreakpoint = newBreakpoint;
+
+    currentPage = 1;
+    if (selectedPart) {
+      fetchAndDrawExercises({
+        [categoriesToFiltersMap[selectedCategory]]: selectedPart,
+        page: currentPage,
+        limit: exercisesPerPage[currentBreakpoint],
+      });
+    } else {
+      fetchAndDrawFilters(selectedCategory);
+    }
+  }, 500);
+
   // Event listeners
   elements.buttonsAll?.addEventListener('click', onFilterButtonClick);
   elements.exerciseCards?.addEventListener('click', onExerciseCardClick);
@@ -248,6 +219,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   elements.searchBtnClear?.addEventListener('click', onClearSearchClick);
   elements.breadcrumbsTitle?.addEventListener('click', onTitleClick);
+
+  window.addEventListener('resize', onResize);
 
   // Initial load
   fetchAndDrawFilters(selectedCategory);

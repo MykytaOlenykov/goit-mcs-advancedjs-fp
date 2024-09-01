@@ -22,11 +22,36 @@
 
 @media only screen and (min-width: 1440px) {
   .favorites-section {
-    padding: 90px;
+    padding: 90px 0 60px 0;
   }
 
   .favorites-section .exercises__cards-wraper {
     gap: 32px;
+  }
+
+  .exercises__cards-container {
+    max-height: 530px;
+    overflow-y: auto;
+    padding-right: 16px;
+    overscroll-behavior: contain;
+  }
+
+  .exercises__cards-container::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .exercises__cards-container::-webkit-scrollbar-track {
+    background: #2424241A;
+  }
+
+  .exercises__cards-container::-webkit-scrollbar-thumb {
+    background: var(--black);
+    border-radius: 12px;
+  }
+
+  .exercises__cards-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(36, 36, 36, 0.8);
+    cursor: pointer;
   }
 }
 

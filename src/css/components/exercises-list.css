@@ -29,18 +29,6 @@
   background-color: var(--white);
 }
 
-@media only screen and (min-width: 768px) {
-  .exercises__name {
-    width: 344px;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .exercises__name {
-    width: 442px;
-  }
-}
-
 .exercises__name-wraper-1 {
   display: flex;
   gap: 16px;
