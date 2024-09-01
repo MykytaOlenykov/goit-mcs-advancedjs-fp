@@ -20,19 +20,16 @@
 .quote_image_wrapper {
   width: 100%;
   min-height: 242px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   border-radius: 20px;
-  background-image: url('../../assets/images/women-sportswear-taking-break-from-workout.jpg');
+  overflow: hidden;
 }
 
-@media (min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
-  .quote_image_wrapper {
-    background-image: url('../../assets/images/women-sportswear-taking-break-from-workout2x.jpg');
-  }
+.quote_image_wrapper img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .quote_image {

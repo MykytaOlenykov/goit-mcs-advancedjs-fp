@@ -34,19 +34,15 @@
     width: 168px;
     height: 100px;
     border-radius: 20px;
-    background-size: cover;
-    background-position: center;
-    background-image: url(../../assets//images/hero/hero-img-small-desk.jpg);
+    overflow: hidden;
   }
-}
 
-@media (min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
-  @media screen and (min-width: 1440px) {
-    .hero__decorative-image {
-      background-image: url('../../assets/images/hero/hero-img-small-desk@2x.jpg');
-    }
+  .hero__decorative-image img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 }
 
@@ -194,46 +190,32 @@
   transition: all 600ms ease-in-out;
 }
 
-.hero__image {
-  width: 100%;
-  height: 460px;
-  background-size: cover;
-  background-position: center;
-  background-image: url(../../assets/images/hero/hero-img-mob.jpg);
+.hero__image img {
   border-radius: 30px;
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
   margin-bottom: 20px;
 }
 
 @media screen and (min-width: 768px) {
-  .hero__image {
-    border-radius: 60px;
+  .hero__image img {
+    width: 704px;
     height: 550px;
-    background-image: url(../../assets/images/hero/hero-img-tab.jpg);
+    border-radius: 60px;
+    margin-bottom: 20px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .hero__image {
+  .hero__image img {
+    display: flex;
+    width: 100%;
     height: 350px;
-    background-image: url(../../assets/images/hero/hero-img-desk.jpg);
+    border-radius: 60px;
+    justify-content: center;
     margin-bottom: 0;
-  }
-}
-
-@media (min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
-  .hero__image {
-    background-image: url('../../assets/images/hero/hero-img-mob@2x.jpg');
-  }
-  @media screen and (min-width: 768px) {
-    .hero__image {
-      background-image: url('../../assets/images/hero/hero-img-tab@2x.jpg');
-    }
-  }
-  @media screen and (min-width: 1440px) {
-    .hero__image {
-      background-image: url('../../assets/images/hero/hero-img-desk@2x.jpg');
-    }
   }
 }
