@@ -1,7 +1,37 @@
 .favorites-section {
-  padding: 90px 0 60px;
+  padding: 80px;
 }
 
 .favorites-section .section__title {
-  margin-bottom: 32px;
+  margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-section {
+    padding: 100px;
+  }
+
+  .favorites-section .section__title {
+    margin-bottom: 32px;
+  }
+
+  .favorites-section .exercises__cards-wraper {
+    gap: 64px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .favorites-section {
+    padding: 90px;
+  }
+
+  .favorites-section .exercises__cards-wraper {
+    gap: 32px;
+  }
+}
+
+@media only screen and (max-width: 1439px) {
+  .favorites-section .quote {
+    grid-row-start: 1;
+  }
 }

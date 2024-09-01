@@ -3,6 +3,19 @@
   display: flex;
   justify-content: center;
   gap: var(--initialGap);
+  margin-bottom: 60px;
+}
+
+@media only screen and (min-width: 768px) {
+  .tui-pagination {
+    margin-bottom: 64px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .tui-pagination {
+    margin-bottom: 0;
+  }
 }
 
 .tui-page-btn {
@@ -48,6 +61,6 @@
 .tui-next.tui-is-disabled,
 .tui-last.tui-is-disabled {
   cursor: not-allowed;
-  border-color: #2424241A;
+  border-color: #2424241a;
   fill: #24242480;
 }
