@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const getMovePageBtn = (type, isDisabled = false) => {
     return `<a href="#" class="tui-page-btn tui-${type} ${
       isDisabled ? 'tui-is-disabled' : ''
-    }">
+    }" aria-label="page-${type}">
         <svg width="20" height="20">
           <use href="${svgSprite}#${paginationIconsMap[type]}"></use>
         </svg>
