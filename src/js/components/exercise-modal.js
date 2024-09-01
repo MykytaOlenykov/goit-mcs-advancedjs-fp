@@ -3,6 +3,8 @@ import { favoritesExercisesStore } from '../store/exercises';
 import { renderFavouriteExerciseCards } from './draw-filters';
 import { openFeedbackModal } from './feedback-modal';
 import svgSprite from '../../assets/icons/icons-sprite.svg';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 const exercisesListRef = document.querySelector('.js-exercises-cards');
 const exerciseModalBackdropRef = document.querySelector(
@@ -40,14 +42,19 @@ exercisesListRef.addEventListener('click', e => {
 });
 
 async function getExercise({ exerciseId }) {
-  //   try {
-  const data = await getExerciseById({
-    exerciseId,
-  });
-  currentExercise = data;
-  exerciseModalContentRef.innerHTML = renderExerciseCard(data);
-  mountExerciseCard();
-  //   } catch (error) {}
+  try {
+    const data = await getExerciseById({
+      exerciseId,
+    });
+    currentExercise = data;
+    exerciseModalContentRef.innerHTML = renderExerciseCard(data);
+    mountExerciseCard();
+  } catch (error) {
+    iziToast.error({
+      message: 'Something went wrong, please try again later.',
+      position: 'topRight',
+    });
+  }
 }
 
 function mountExerciseCard() {

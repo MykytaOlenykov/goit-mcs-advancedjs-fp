@@ -65,13 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
   const getMovePageBtn = (type, isDisabled = false) => {
     return `<a href="#" class="tui-page-btn tui-${type} ${
       isDisabled ? 'tui-is-disabled' : ''
@@ -118,8 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           fetchAndDrawFilters(selectedCategory);
         }
-
-        scrollToTop();
       });
     } else {
       removePagination();
@@ -203,7 +194,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     currentPage = 1;
 
-    scrollToTop();
     await fetchAndDrawExercises({
       [categoriesToFiltersMap[selectedCategory]]: selectedPart,
       page: currentPage,

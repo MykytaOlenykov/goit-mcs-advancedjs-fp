@@ -1,5 +1,8 @@
 import { object, string, number } from 'yup';
 import { addExerciseRating } from '../services/api';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+import { isAxiosError } from 'axios';
 
 let formSchema = object({
   email: string()
@@ -70,27 +73,41 @@ async function formSubmitHandler(event) {
       },
       { abortEarly: false }
     );
+    await addExerciseRating({
+      exerciseId: currentExerciseId,
+      body: validatedData,
+    });
     refs.modal.classList.add('is-hidden');
-    addExerciseRating({ exerciseId: currentExerciseId, body: validatedData });
+    iziToast.success({
+      message: 'Thanks for your feedback',
+      position: 'topRight',
+    });
     resetForm();
   } catch (err) {
-    const errors = {};
-    err.inner.forEach(error => {
-      if (!errors[error.path]) {
-        errors[error.path] = error.message;
+    if (isAxiosError(err)) {
+      iziToast.error({
+        message: 'Something went wrong, please try again later.',
+        position: 'topRight',
+      });
+    } else {
+      const errors = {};
+      err.inner.forEach(error => {
+        if (!errors[error.path]) {
+          errors[error.path] = error.message;
+        }
+      });
+      if (errors['email']) {
+        formRef.querySelector('#email-error').textContent = errors['email'];
+        formRef.querySelector('#email-error').style.display = 'block';
       }
-    });
-    if (errors['email']) {
-      formRef.querySelector('#email-error').textContent = errors['email'];
-      formRef.querySelector('#email-error').style.display = 'block';
-    }
-    if (errors['review']) {
-      formRef.querySelector('#comment-error').textContent = errors['review'];
-      formRef.querySelector('#comment-error').style.display = 'block';
-    }
-    if (errors['rate']) {
-      formRef.querySelector('#stars-error').textContent = errors['rate'];
-      formRef.querySelector('#stars-error').style.display = 'block';
+      if (errors['review']) {
+        formRef.querySelector('#comment-error').textContent = errors['review'];
+        formRef.querySelector('#comment-error').style.display = 'block';
+      }
+      if (errors['rate']) {
+        formRef.querySelector('#stars-error').textContent = errors['rate'];
+        formRef.querySelector('#stars-error').style.display = 'block';
+      }
     }
   }
 }

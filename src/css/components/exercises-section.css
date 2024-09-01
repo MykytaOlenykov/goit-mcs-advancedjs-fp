@@ -154,6 +154,8 @@
 
   overflow: hidden;
   position: relative;
+
+  cursor: pointer;
 }
 
 .exercises__cards-link::after {
