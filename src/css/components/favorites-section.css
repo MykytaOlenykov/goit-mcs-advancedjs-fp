@@ -1,5 +1,5 @@
 .favorites-section {
-  padding: 80px;
+  padding: 80px 0;
 }
 
 .favorites-section .section__title {
@@ -8,7 +8,7 @@
 
 @media only screen and (min-width: 768px) {
   .favorites-section {
-    padding: 100px;
+    padding: 100px 0;
   }
 
   .favorites-section .section__title {
@@ -41,7 +41,7 @@
   }
 
   .exercises__cards-container::-webkit-scrollbar-track {
-    background: #2424241A;
+    background: #2424241a;
   }
 
   .exercises__cards-container::-webkit-scrollbar-thumb {
